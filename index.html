@@ -10,216 +10,14 @@
   p { orphans: 3; widows: 3; }
 }
 
-/* Desktop: align accent with case-study grid; mobile remains unchanged. */
-@media (max-width:860px){.csHeaderAccent{margin-left:0!important;}}
-/* Mobile case-study section headings: conventional, larger, clearer. */
-@media (max-width:860px){
-  .csec>div:first-child .klabel{
-    font-family:var(--font)!important;
-    font-size:18px!important;
-    font-weight:600!important;
-    line-height:1.25!important;
-    letter-spacing:.07em!important;
-    color:var(--fg)!important;
-    margin-bottom:18px!important;
-  }
-}/* Mobile reading scale: consistent body copy without enlarging labels or data. */
-@media (max-width:860px){
-  .csBody p,
-  .ulist li,
-  .pageLede,
-  .abNewProse p,
-  .procTlD,
-  .abTlCardDesc{
-    font-size:16px!important;
-    line-height:1.72!important;
-  }
-  .cmpL li,
-  .tradeT,
-  .sysDesc{
-    font-size:15px!important;
-    line-height:1.65!important;
-  }
-}/* Mobile case-study typography expansion v2. */
-@media (max-width:860px){
-  .csec .klsub{
-    font-family:var(--font)!important;
-    font-size:18px!important;
-    font-weight:600!important;
-    line-height:1.28!important;
-    letter-spacing:.065em!important;
-    color:var(--fg)!important;
-    opacity:1!important;
-    margin-bottom:18px!important;
-  }
-  .csCollapseBtn{
-    padding:14px 16px!important;
-  }
-  .csCBLabel{
-    font-family:var(--font)!important;
-    font-size:16px!important;
-    font-weight:600!important;
-    line-height:1.35!important;
-    letter-spacing:.055em!important;
-    color:var(--fg)!important;
-  }
-  .csH{
-    font-size:22px!important;
-    line-height:1.25!important;
-  }
-  .csBody p,
-  .ulist li,
-  .cmpL li,
-  .tradeT,
-  .sysDesc,
-  .pageLede,
-  .procTlD,
-  .abNewProse p,
-  .abTlCardDesc{
-    font-size:16px!important;
-    line-height:1.72!important;
-  }
-  .beatTbl td{
-    font-size:15px!important;
-    line-height:1.6!important;
-  }
-  .note,
-  .dcap{
-    font-size:14px!important;
-    line-height:1.6!important;
-  }
-  .cmpH,
-  .loopLabel,
-  .wdDiagSec{
-    font-size:13px!important;
-    line-height:1.45!important;
-    letter-spacing:.07em!important;
-  }
-}/* Mobile body-copy color: softer than black, still accessible. */
-@media (max-width:860px){
-  .site{--mobile-body:#c2c7cd;}
-  .site.light{--mobile-body:#50555e;}
-  .csBody p,
-  .ulist li,
-  .cmpL li,
-  .tradeT,
-  .sysDesc,
-  .pageLede,
-  .procTlD,
-  .abNewProse p,
-  .abTlCardDesc{
-    color:var(--mobile-body)!important;
-  }
-}
-/* Mobile dropdown visibility: hide the duplicated source heading only when collapsed. */
-@media (max-width:860px){
-  .csec.csCollapse>div:first-child{display:none!important;}
-  .csec.csCollapse>.csCollapseBtn{display:flex!important;}
-}
-/* Mobile diagram typography: readable hierarchy across all case studies. */
-@media (max-width:860px){
-  .wdDiagEye{
-    font-size:12px!important;
-    line-height:1.4!important;
-    letter-spacing:.11em!important;
-  }
-  .wdDiagTitle{
-    font-size:22px!important;
-    line-height:1.2!important;
-  }
-  .wdDiagIntro{
-    font-size:16px!important;
-    line-height:1.65!important;
-    margin-top:8px!important;
-    color:var(--mobile-body)!important;
-  }
-  .loopLabel,
-  .cmpH,
-  .wdDiagSec{
-    font-size:14px!important;
-    line-height:1.45!important;
-    letter-spacing:.07em!important;
-  }
-  .dnt,
-  .lnt,
-  .tradeD{
-    font-size:18px!important;
-    line-height:1.35!important;
-  }
-  .dns,
-  .lns,
-  .wdDiagFoot,
-  .wdPgSFlow{
-    font-size:14px!important;
-    line-height:1.6!important;
-  }
-  .wdDiagHdr{
-    padding:16px 18px 14px!important;
-  }
-  .wdDiagBody{
-    padding:16px 18px!important;
-  }
-}/* Compact closed dropdown rhythm; safe spacing returns when open. */
-@media (max-width:860px){
-  .csec.csCollapse{
-    padding:4px 0!important;
-    gap:0!important;
-  }
-  .csec.csCollapse.csOpen{
-    padding:8px 0 20px!important;
-    gap:14px!important;
-  }
-  .csec.csCollapse>.csCollapseBtn{
-    margin:0!important;
-    min-height:54px;
-  }
-  .csec.csCollapse>.csBody{
-    margin:0!important;
-    position:relative!important;
-  }
-  .csec.csCollapse.csOpen>.csBody{
-    margin-top:0!important;
-    overflow:hidden!important;
-  }
-}/* Selected-work card images: crisp, centered, and protected from edge cropping. */
-.cardImg img{
-  opacity:1!important;
-}
-.cardImg .caseLogo{
-  width:55%!important;
-  height:calc(100% - 24px)!important;
-  max-height:calc(100% - 24px)!important;
-  object-fit:contain!important;
-  object-position:center center!important;
-  margin:auto!important;
-  display:block!important;
-}
-.cardImg img[alt="Game Redesign"]{
-  filter:none!important;
-  object-position:center center!important;
-}/* Uploaded videos remain visible and responsive on mobile. */
-@media (max-width:640px){
-  .wdEvPh{
-    display:block!important;
-    min-height:0!important;
-    padding:0!important;
-    overflow:visible!important;
-  }
-  .wdEvPh video{
-    display:block!important;
-    width:100%!important;
-    height:auto!important;
-    max-height:none!important;
-    object-fit:contain!important;
-  }
-}/* Desktop primary navigation stays high and stable in the viewport. */
+/* Desktop floating navigation: fixed to the right viewport center. */
 @media (min-width:861px){
-  .sideNav{
-    top:180px!important;
-    right:28px!important;
-    transform:none!important;
-  }
-}</style>
+  .sideNav{top:50%!important;right:28px!important;transform:translateY(-50%)!important;}
+}
+
+/* Case-study header accent follows the desktop content grid. */
+@media (max-width:860px){.csHeaderAccent{margin-left:0!important;}}
+</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
@@ -385,8 +183,17 @@ a{color:inherit;text-decoration:none}
 .footLink{cursor:pointer;transition:color .15s}
 .footLink:hover{color:var(--acc)}
 .lockg{font-size:11px;color:var(--faint);margin-left:5px}
+.overlay{position:fixed;inset:0;z-index:80;background:rgba(5,6,8,.6);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{width:440px;max-width:100%;background:var(--panel);border:1px solid var(--chipborder);border-radius:0;padding:30px;font-family:var(--font)}
+.mTop{display:flex;align-items:center;justify-content:space-between}
+.mTitle{font-size:13px;color:var(--acc);letter-spacing:.04em}
 .mX{cursor:pointer;color:var(--dim);font-size:18px;line-height:1}
 .mX:hover{color:var(--fg)}
+.mDesc{font-size:13px;line-height:1.6;color:var(--muted);margin-top:16px}
+.gateInput{width:100%;background:var(--panel2);border:1px solid var(--btng);border-radius:0;padding:13px 14px;color:var(--fg);font-family:var(--font);font-size:14px;margin-top:16px}
+.gateInput:focus{outline:none;border-color:var(--acc)}
+.gateBtn{width:100%;margin-top:14px;background:var(--acc);color:var(--accfg);font-weight:500;border:none;border-radius:0;padding:13px;font-family:var(--font);font-size:13px;cursor:pointer}
+.gateErr{color:#ff6b6b;font-size:12px;margin-top:12px}
 .settBtn{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:0;color:var(--muted);cursor:pointer;transition:.15s;flex-shrink:0}
 .settBtn:hover{border-color:var(--acc);color:var(--acc)}
 .settPanel{display:none;position:fixed;right:24px;top:64px;z-index:71;width:296px;background:var(--panel);border:1px solid var(--chipborder);border-radius:0;padding:18px 20px 14px;font-family:var(--font);box-shadow:0 14px 44px rgba(0,0,0,.42);max-height:80vh;overflow-y:auto}
@@ -823,8 +630,8 @@ a{color:inherit;text-decoration:none}
 </div>
 <div class="wrap">
 <div class="cardsGrid">
-<div class="card" onClick="{{ goCase }}"><div class="cardImg" style="display:flex;align-items:center;justify-content:center"><img class="caseLogo" src="uploads/Wildland_Icon.png" alt="Wildland Adventure" style="width:55%;height:auto;object-fit:contain;image-rendering:crisp-edges"><div class="cardImgGrad" style="background:linear-gradient(transparent 60%,var(--panel))"></div></div><div class="cardBody"><div><div class="cardTitle">Wildland Adventure</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div></div><div class="cardChips"><span class="gchip">progression</span><span class="gchip">economy</span><span class="gchip">live-ops</span></div></div>
-<div class="card" onClick="{{ goCaseMagic }}"><div class="cardImg" style="display:flex;align-items:center;justify-content:center"><img class="caseLogo" src="uploads/Magicaland_Icon.png" alt="Magicaland Adventure" style="width:55%;height:auto;object-fit:contain;image-rendering:crisp-edges"></div><div class="cardBody"><div><div class="cardTitle">Magicaland Adventure</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div></div><div class="cardChips"><span class="gchip">non-linear</span><span class="gchip">product</span><span class="gchip">economy</span><span class="gchip">mvp</span></div></div>
+<div class="card" onClick="{{ goCase }}"><div class="cardImg" style="display:flex;align-items:center;justify-content:center"><img src="uploads/Wildland_Icon.png" alt="Wildland Adventure" style="width:55%;height:auto;object-fit:contain;image-rendering:crisp-edges"><div class="cardImgGrad" style="background:linear-gradient(transparent 60%,var(--panel))"></div></div><div class="cardBody"><div><div class="cardTitle">Wildland Adventure</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div></div><div class="cardChips"><span class="gchip">progression</span><span class="gchip">economy</span><span class="gchip">live-ops</span></div></div>
+<div class="card" onClick="{{ goCaseMagic }}"><div class="cardImg" style="display:flex;align-items:center;justify-content:center"><img src="uploads/Magicaland_Icon.png" alt="Magicaland Adventure" style="width:55%;height:auto;object-fit:contain;image-rendering:crisp-edges"></div><div class="cardBody"><div><div class="cardTitle">Magicaland Adventure</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div></div><div class="cardChips"><span class="gchip">non-linear</span><span class="gchip">product</span><span class="gchip">economy</span><span class="gchip">mvp</span></div></div>
 <div class="card" onClick="{{ openGate }}" style="cursor:pointer"><div class="cardImg" style="position:relative"><img src="uploads/pasted-1782975439419-0.png" alt="Game Redesign" style="filter:grayscale(40%) brightness(.75)"><div class="cardImgGrad"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div></div><div class="cardBody"><div><div class="cardTitle">Game Redesign</div></div><div class="cardMeta">EFFECTIVATE</div></div></div><div class="cardChips"><span class="gchip">accessibility</span><span class="gchip">55+</span><span class="gchip">adaptive</span></div></div>
 </div>
 </div>
@@ -919,7 +726,7 @@ a{color:inherit;text-decoration:none}
 <div style="margin:32px 0;position:relative;width:100%;overflow:hidden"><img src="./uploads/Wildland_Professional_Phone_Mockups_Transparent_v3.png" alt="Wildland mockups" class="mockupImg" style="height:auto;display:block;margin:0;padding-left:100px;box-sizing:border-box;opacity:.85">&gt;<div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 12%,transparent 88%,var(--bg) 100%)"></div></div>
 <div class="csec" id="cs-w-2"><div><div class="klabel">CHALLENGE</div></div><div class="csBody"><p>Wildland introduced a fundamentally different gameplay pattern into Coin Master - shifting players from the familiar spin-driven core loop into a spatial exploration experience based on resource spending, obstacle clearing, progression, and Stage completion.</p><p>The challenge was to make this new interaction model immediately understandable within a mature live game, while ensuring it complemented the wider product ecosystem rather than competing with it for player attention, time, or resources. At the same time, obstacle costs, resource distribution, rewards, player momentum, and a continuous LiveOps production schedule had to remain balanced - layout, Economy, pacing, and production constraints working together as one connected system.</p></div></div>
 <div class="csec" id="cs-w-3"><div><div class="klabel">APPROACH</div></div><div class="csBody"><p>I translated Product and Economy direction into playable Chapter layouts, progression configurations, content requirements, and production-ready solutions.</p><ul class="ulist"><li><span class="bul">·</span>High-level Chapter and Stage layouts, route structure, and area sequencing.</li><li><span class="bul">·</span>Obstacle, resource, and reward placement tuned for progression pacing.</li><li><span class="bul">·</span>When tests showed a mid-Stage bottleneck, I redistributed cost, obstacle density, and reward cadence with Economy - preserving the total cost envelope while improving momentum toward completion.</li><li><span class="bul">·</span>Chapter Dressing, art and asset requirements, and internal tooling needs.</li><li><span class="bul">·</span>Use cases and acceptance criteria, iteration, validation, and QA support.</li></ul></div></div>
-<div class="csec" id="cs-w-4"><div><div class="klabel">SYSTEM</div></div><div class="csBody"><div class="wdDiag">
+<div class="csec" id="cs-w-4"><div><div class="klabel">SYSTEM<br>DESIGN</div></div><div class="csBody"><div class="wdDiag">
 <div class="wdDiagHdr">
 <div class="wdDiagEye">SYSTEM STRUCTURE</div>
 <div class="wdDiagTitle">How Progression Scales</div>
@@ -950,7 +757,7 @@ a{color:inherit;text-decoration:none}
 </div>
 </div>
 </div></div></div>
-<div class="csec"><div><div class="klsub">INVESTMENT<br>DECISION</div></div><div class="csBody"><svg viewBox="0 0 660 168" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin-bottom:4px"><defs><marker id="w04a" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--dim)"></polygon></marker></defs><path d="M578,72 Q610,72 610,140 Q610,154 330,154 Q50,154 50,140 Q50,72 46,72" style="stroke:var(--dim)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#w04a)" fill="none"></path><line x1="118" y1="72" x2="158" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="238" y1="72" x2="278" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="358" y1="72" x2="398" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="478" y1="72" x2="518" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><circle cx="80" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(68,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></g><text x="80" y="120" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">SEE TARGET</text><circle cx="200" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(188,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 14v2"></path><path d="M14 20v2"></path><path d="M14 2v2"></path><path d="M14 8v2"></path><path d="M2 15h8"></path><path d="M2 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2"></path><path d="M2 9h8"></path><path d="M22 15h-4"></path><path d="M22 3h-2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2"></path><path d="M22 9h-4"></path><path d="M5 3v18"></path></g><text x="200" y="120" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">COMPARE VALUE</text><circle cx="320" cy="72" r="34" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(308,60)" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></g><text x="320" y="120" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:9px;letter-spacing:.06em">INVEST POTIONS</text><circle cx="440" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(428,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></g><text x="440" y="120" text-anchor="middle" style="fill:var(--fg);fill-opacity:.65;font-family:var(--font);font-size:9px;letter-spacing:.06em">UNLOCK PROGRESS</text><circle cx="560" cy="72" r="34" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(548,60)" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"></path><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"></path><path d="M18 9h1.5a1 1 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6 9H4.5a1 1 0 0 1 0-5H6"></path></g><text x="560" y="120" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:9px;letter-spacing:.06em">REASSESS</text><text x="330" y="163" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">W-04 · INVESTMENT DECISION MODEL</text></svg></div></div>
+<div class="csec"><div><div class="klsub">INVESTMENT<br>DECISION</div></div><div class="csBody"><svg viewBox="0 0 660 168" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin-bottom:4px"><defs><marker id="w04a" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--dim)"></polygon></marker></defs><path d="M578,72 Q610,72 610,140 Q610,154 330,154 Q50,154 50,140 Q50,72 46,72" style="stroke:var(--dim)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#w04a)" fill="none"></path><line x1="118" y1="72" x2="158" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="238" y1="72" x2="278" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="358" y1="72" x2="398" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="478" y1="72" x2="518" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><!-- N1 route: SEE TARGET --><circle cx="80" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(68,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></g><text x="80" y="120" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">SEE TARGET</text><!-- N2 table-columns-split: COMPARE --><circle cx="200" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(188,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 14v2"></path><path d="M14 20v2"></path><path d="M14 2v2"></path><path d="M14 8v2"></path><path d="M2 15h8"></path><path d="M2 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2"></path><path d="M2 9h8"></path><path d="M22 15h-4"></path><path d="M22 3h-2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2"></path><path d="M22 9h-4"></path><path d="M5 3v18"></path></g><text x="200" y="120" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">COMPARE VALUE</text><!-- N3 flask: INVEST POTIONS (yellow) --><circle cx="320" cy="72" r="34" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(308,60)" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></g><text x="320" y="120" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:9px;letter-spacing:.06em">INVEST POTIONS</text><!-- N4 lock-open: UNLOCK PROGRESS --><circle cx="440" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(428,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></g><text x="440" y="120" text-anchor="middle" style="fill:var(--fg);fill-opacity:.65;font-family:var(--font);font-size:9px;letter-spacing:.06em">UNLOCK PROGRESS</text><!-- N5 trophy: REASSESS (yellow) --><circle cx="560" cy="72" r="34" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(548,60)" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"></path><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"></path><path d="M18 9h1.5a1 1 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6 9H4.5a1 1 0 0 1 0-5H6"></path></g><text x="560" y="120" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:9px;letter-spacing:.06em">REASSESS</text><text x="330" y="163" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">W-04 · INVESTMENT DECISION MODEL</text></svg></div></div>
 <div class="csec"><div><div class="klsub">GAMEPLAY<br>LOOPS</div></div><div class="csBody"><svg viewBox="0 0 560 168" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin-bottom:20px"><defs><marker id="w01a" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--dim)"></polygon></marker></defs><path d="M480,72 Q512,72 512,140 Q512,154 260,154 Q8,154 8,140 Q8,72 40,72" style="stroke:var(--dim)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#w01a)" fill="none"></path><line x1="120" y1="72" x2="160" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w01a)"></line><line x1="240" y1="72" x2="280" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w01a)"></line><line x1="360" y1="72" x2="400" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w01a)"></line><circle cx="80" cy="72" r="36" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(62,54) scale(1.5)" style="stroke:var(--dim)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></g><text x="80" y="121" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:10px;letter-spacing:.07em">EXPLORE</text><circle cx="200" cy="72" r="36" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(182,54) scale(1.5)" stroke="var(--acc)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></g><text x="200" y="121" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:10px;letter-spacing:.07em">SPEND POTIONS</text><circle cx="320" cy="72" r="36" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(302,54) scale(1.5)" style="stroke:var(--dim)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="m14 12-8.381 8.38a1 1 0 0 1-3.001-3L11 9"></path><path d="M15 15.5a.5.5 0 0 0 .5.5A6.5 6.5 0 0 0 22 9.5a.5.5 0 0 0-.5-.5h-1.672a2 2 0 0 1-1.414-.586l-5.062-5.062a1.205 1.205 0 0 0-1.704 0L9.352 5.648a1.205 1.205 0 0 0 0 1.704l5.062 5.062A2 2 0 0 1 15 13.828z"></path></g><text x="320" y="121" text-anchor="middle" style="fill:var(--fg);fill-opacity:.65;font-family:var(--font);font-size:10px;letter-spacing:.07em">CLEAR OBSTACLES</text><circle cx="440" cy="72" r="36" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(422,54) scale(1.5)" stroke="var(--acc)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"></path></g><text x="440" y="121" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:10px;letter-spacing:.07em">ADVANCE</text><text x="280" y="163" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">W-01 · THE WILDLAND PROGRESSION LOOP</text></svg><p>The feature connects three nested loops - each building on the previous to create meaning across different timescales.</p><div class="diagram" style="margin-top:18px"><div class="loopCard"><div class="loopLabel">ACTION LOOP</div><div class="loopNodes"><div class="dnode"><div class="dnum">01</div><div class="dnt">Spend Potions</div><div class="dns">Entry currency spent on obstacles.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">02</div><div class="dnt">Clear Obstacles</div><div class="dns">Each cleared obstacle drops a Flag.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">03</div><div class="dnt">Earn Flags</div><div class="dns">Flags are the currency of Stage progression.</div></div></div><div class="dcap" style="margin-top:10px">Moment-to-moment action - every spend has a visible result.</div></div><div class="loopCard"><div class="loopLabel">STAGE LOOP</div><div class="loopNodes"><div class="dnode"><div class="dnum">01</div><div class="dnt">Earn Flags</div><div class="dns">Flags fill the progress bar.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">02</div><div class="dnt">Fill Stage Bar</div><div class="dns">Progress is visible and measurable.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">03</div><div class="dnt">Receive Rewards</div><div class="dns">Spins, gems, and event currency.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">04</div><div class="dnt">Advance</div><div class="dns">Unlock the next Stage on the map.</div></div></div><div class="dcap" style="margin-top:10px">Stage progression - gives meaning to each individual action.</div></div><div class="loopCard"><div class="loopLabel">CHAPTER LOOP</div><div class="loopNodes"><div class="dnode"><div class="dnum">01</div><div class="dnt">Complete Stages</div><div class="dns">Several Stages fill the Chapter.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">02</div><div class="dnt">Finish Chapter</div><div class="dns">Chapter completion - rewards and recognition.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">03</div><div class="dnt">Unlock Next Chapter</div><div class="dns">New environment, obstacles, reward cadence.</div></div></div><div class="dcap" style="margin-top:10px">Long-term arc - creates a sense of journey beyond individual sessions.</div></div><div class="dsub"><span class="chip">Tree of Life · water</span><span class="chip">Wildland Temple · bombs</span><span class="chip">Race · points ▶ levels</span></div></div></div></div>
 <div class="csec"><div><div class="klsub">PROGRESSION &amp;<br>ECONOMY<br>ITERATION</div></div><div class="csBody"><div class="wdDiag">
 <div class="wdDiagHdr">
@@ -989,7 +796,7 @@ a{color:inherit;text-decoration:none}
 <div class="wdDiagFoot">Costs, obstacle density, and reward cadence were redistributed to reduce a mid-Stage bottleneck and preserve momentum.</div>
 </div><p>The goal was not to remove complexity, but to distribute it more intentionally across the Stage. An uneven progression curve created a mid-Stage bottleneck that carried into end-Stage exhaustion.</p><div class="cmp" style="margin-top:14px"><div class="cmpCol"><div class="cmpH">BEFORE</div><div class="baChain"><div class="dnode" style="font-size:13px;padding:8px 12px">Stable start</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(255,80,80,.3);background:rgba(255,80,80,.06)">Dense mid-Stage</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(255,80,80,.3);background:rgba(255,80,80,.06)">Sustained friction</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(255,80,80,.3);background:rgba(255,80,80,.06)">Exhausted finish</div></div><div style="font-family:var(--font);font-size:12px;color:var(--dim);margin-top:12px">2S / 6M / 8L / 4 Rewards - high cost density, long uninterrupted segments.</div></div><div class="cmpCol"><div class="cmpH">AFTER</div><div class="baChain"><div class="dnode" style="font-size:13px;padding:8px 12px">Stable start</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(143,224,74,.3);background:rgba(143,224,74,.06)">Gradual complexity</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:var(--acc);background:rgba(233,162,59,.08)">Pacing break</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(143,224,74,.3);background:rgba(143,224,74,.06)">Denser challenge</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px">Controlled finish</div></div><div style="font-family:var(--font);font-size:12px;color:var(--dim);margin-top:12px">2S / 7M / 7L / 5 Rewards - redistributed cost, clearer beats, added relief point.</div></div></div><div style="margin-top:24px"><div class="cmpH" style="margin-bottom:8px">GAMEPLAY BEATS - AFTER</div><table class="beatTbl"><tr><td>Opening Beat</td><td>S · S · M</td><td>Reward ▶ low friction entry</td></tr><tr><td>Rising Action</td><td>M · M · L</td><td>Reward ▶ gradual escalation</td></tr><tr><td>Relief Beat</td><td>M · L</td><td>Reward ▶ deliberate pacing break before peak</td></tr><tr><td>Escalation</td><td>M · L · M · L · L</td><td>Reward ▶ highest density</td></tr><tr><td>Climactic Finish</td><td>M · L · L</td><td>Reward ▶ Stage Complete</td></tr></table></div></div></div>
 <div class="csec" id="cs-w-5"><div><div class="klabel">EXPERIENCE</div></div><div class="csBody"><div class="shots" style="grid-template-columns:1fr 1fr 1fr"><div class="shot" style="overflow:hidden;border-radius:0"><img src="./uploads/images.jpg" alt="Wildland stage - green biome" style="width:100%;height:auto;display:block"></div><div class="shot" style="overflow:hidden;border-radius:0"><img src="./uploads/images (5).jpg" alt="Wildland stage - canyon biome" style="width:100%;height:auto;display:block"></div><div class="shot" style="overflow:hidden;border-radius:0"><img src="./uploads/images (6).jpg" alt="Wildland stage - desert biome" style="width:100%;height:auto;display:block"></div></div></div></div>
-<div class="csec"><div><div class="klsub">WALKTHROUGH</div></div><div class="csBody"><div class="video"><iframe src="https://www.youtube.com/embed/zz3zQinhZ3E?playsinline=1&amp;rel=0" title="Wildland Adventure walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" allowfullscreen></iframe></div><a href="https://www.youtube.com/watch?v=zz3zQinhZ3E" target="_blank" rel="noopener noreferrer" style="display:inline-flex;margin-top:12px;color:var(--acc);font-family:var(--font);font-size:14px;text-decoration:underline;text-underline-offset:4px">Watch on YouTube</a></div></div>
+<div class="csec"><div><div class="klsub">WALKTHROUGH</div></div><div class="csBody"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/4fUSdK4UKQg" title="Wildland Adventure walkthrough" allow="encrypted-media; picture-in-picture; fullscreen" loading="lazy"></iframe></div><div class="note">// Reference capture of the live feature. Swap for your own walkthrough or screen recording.</div></div></div>
 <div class="csec" id="cs-w-6"><div><div class="klabel">EXECUTION &amp;<br>COLLABORATION</div></div><div class="csBody"><div class="wdDiag">
 <div class="wdDiagHdr">
 <div class="wdDiagEye">ROLE AND PRODUCTION FLOW</div>
@@ -1029,7 +836,7 @@ a{color:inherit;text-decoration:none}
 <div class="wdDiagBody">
 <div class="wdEvGrid">
 <div>
-<div class="wdEvPh" style="padding:0;overflow:hidden;min-height:auto;background:transparent;border:none"><div style="max-width:480px;margin:0 auto;position:relative"><video playsinline src="./uploads/AQPVptJzgoktuVfEWZftB-N-W0QV6OgfQk0cqL98YI58LxUhBPGIHonMR0j8YkCvJcapOfdEZpCxSpxfidTg8095V7mNsHQXKdBAVYtRDg.mp4" controls="" style="width:100%;height:auto;display:block" preload="metadata"></video></div></div>
+<div class="wdEvPh" style="padding:0;overflow:hidden;min-height:auto;background:transparent;border:none"><div style="max-width:480px;margin:0 auto;position:relative"><div style="position:absolute;inset:0 0 0 0;background:linear-gradient(to right,var(--bg) 0%,transparent 12%,transparent 88%,var(--bg) 100%);z-index:1;pointer-events:none"></div><video src="./uploads/AQPVptJzgoktuVfEWZftB-N-W0QV6OgfQk0cqL98YI58LxUhBPGIHonMR0j8YkCvJcapOfdEZpCxSpxfidTg8095V7mNsHQXKdBAVYtRDg.mp4" controls="" style="width:100%;height:auto;display:block" preload="metadata"></video></div></div>
 
 </div>
 <div>
@@ -1066,7 +873,7 @@ a{color:inherit;text-decoration:none}
 <div style="margin:32px 0;position:relative;width:100%;overflow:hidden"><img src="./uploads/MagicalLand_Phone_Mockups_Transparent_v2.png" alt="Magicaland mockups" class="mockupImg" style="height:auto;display:block;margin:0;padding-left:100px;box-sizing:border-box;opacity:.85"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 12%,transparent 88%,var(--bg) 100%)"></div></div>
 <div class="csec" id="cs-m-2"><div><div class="klabel">CHALLENGE</div></div><div class="csBody"><p>The existing Expedition model relied on a primarily linear progression structure. This made progression easy to understand and control, but limited optional depth, player agency, and the number of product levers available within the experience.</p><p>The opportunity was to explore whether a controlled non-linear structure could introduce meaningful Side Roads, bonus progression, and risk–reward decisions while preserving a clear Main Road - without investing prematurely in a dedicated Economy, Monetization layer, and new Chapter structures before the direction had been validated with real players. The challenge: build enough of the future experience to test it credibly in production, while keeping the MVP constrained, feasible, and compatible with existing systems.</p></div></div>
 <div class="csec" id="cs-m-3"><div><div class="klabel">ROLE &amp; SCOPE</div></div><div class="csBody"><p>I translated Product, Business, and Economy direction into a production-testable gameplay experience.</p><ul class="ulist"><li><span class="bul">·</span>Contributed to concept development, gameplay alternatives, and strategic direction.</li><li><span class="bul">·</span>Designed Main Road and optional Side Road layouts.</li><li><span class="bul">·</span>Translated Economy requirements, models, and simulation outputs into playable configurations, iterating on resource distribution, progression parameters, and route structure.</li><li><span class="bul">·</span>Created mockups, Chapter Dressing, and visual alternatives; planned existing, new, unique, and temporary MVP assets.</li><li><span class="bul">·</span>Coordinated content needs across Art, Animation, Tech Art, and Development.</li><li><span class="bul">·</span>Defined Level Builder requirements for the non-linear structure and supported configuration export &amp; integration.</li><li><span class="bul">·</span>Clarified critical gameplay and configuration scenarios for QA and Operations, and participated in shared triage.</li></ul></div></div>
-<div class="csec" id="cs-m-4"><div><div class="klabel">SYSTEM</div></div><div class="csBody"><div class="wdDiag">
+<div class="csec" id="cs-m-4"><div><div class="klabel">DESIGN<br>SYSTEM</div></div><div class="csBody"><div class="wdDiag">
 <div class="wdDiagHdr">
 <div class="wdDiagEye">PRODUCT EVOLUTION</div>
 <div class="wdDiagTitle">From Linear Progression to Controlled Non-Linearity</div>
@@ -1197,7 +1004,8 @@ a{color:inherit;text-decoration:none}
   &quot;accent&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;magenta&quot;],&quot;default&quot;:&quot;amber&quot;,&quot;section&quot;:&quot;Visual&quot;},
   &quot;typeface&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;schibsted&quot;,&quot;sora&quot;,&quot;space&quot;],&quot;default&quot;:&quot;schibsted&quot;,&quot;section&quot;:&quot;Visual&quot;},
   &quot;showGrid&quot;: {&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;section&quot;:&quot;Visual&quot;},
-  &quot;behanceUrl&quot;: {&quot;editor&quot;:null,&quot;default&quot;:&quot;&quot;,&quot;section&quot;:&quot;Private&quot;}
+  &quot;behanceUrl&quot;: {&quot;editor&quot;:null,&quot;default&quot;:&quot;&quot;,&quot;section&quot;:&quot;Private&quot;},
+  &quot;behancePassword&quot;: {&quot;editor&quot;:null,&quot;default&quot;:&quot;&quot;,&quot;section&quot;:&quot;Private&quot;}
 }">
 class Component extends DCLogic {
   static TRANS = {
@@ -1227,11 +1035,12 @@ class Component extends DCLogic {
       readCase:'read case', heroBarStatus:'next level · open',
     }
   };
-  state = { page: 'home', theme: 'light', a11yOpen: false, settOpen: false, a11y: { lg: false, contrast: false, motion: false, underline: false }, mobOpen: false };
+  state = { page: 'home', gateOpen: false, val: '', err: false, unlocked: false, theme: 'light', a11yOpen: false, settOpen: false, a11y: { lg: false, contrast: false, motion: false, underline: false }, mobOpen: false };
   handleScroll() {
     const hdr = document.querySelector('.hdr');
     if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 10);
     this.adaptSideNav();
+    // Clamp csLeftNav above footer
     const leftNav = document.querySelector('.csLeftNav');
     const foot = document.querySelector('.foot');
     if (leftNav && foot) {
@@ -1242,7 +1051,7 @@ class Component extends DCLogic {
       const maxBottom = footTop - margin;
       const navCenter = viewH / 2;
       const navTopFromCenter = -navH / 2;
-      const navBottomInViewport = navCenter - navTopFromCenter;
+      const navBottomInViewport = navCenter - navTopFromCenter; // ≈ navCenter + navH/2
       if (navBottomInViewport > maxBottom) {
         const shift = navBottomInViewport - maxBottom;
         leftNav.style.transform = `translateY(calc(-50% - ${shift}px))`;
@@ -1254,12 +1063,12 @@ class Component extends DCLogic {
   static CHAP = {
     case: [
       {id:'cs-w-1',label:'overview'},{id:'cs-w-2',label:'challenge'},{id:'cs-w-3',label:'approach'},
-      {id:'cs-w-4',label:'System'},{id:'cs-w-5',label:'experience'},{id:'cs-w-6',label:'execution'},
+      {id:'cs-w-4',label:'system design'},{id:'cs-w-5',label:'experience'},{id:'cs-w-6',label:'execution'},
       {id:'cs-w-7',label:'outcome'},{id:'cs-w-8',label:'reflection'},
     ],
     magic: [
       {id:'cs-m-1',label:'overview'},{id:'cs-m-2',label:'challenge'},{id:'cs-m-3',label:'role & scope'},
-      {id:'cs-m-4',label:'System'},{id:'cs-m-5',label:'mvp design'},{id:'cs-m-6',label:'execution'},
+      {id:'cs-m-4',label:'design system'},{id:'cs-m-5',label:'mvp design'},{id:'cs-m-6',label:'execution'},
       {id:'cs-m-7',label:'outcome'},{id:'cs-m-8',label:'reflection'},
     ],
     fish: [
@@ -1313,37 +1122,22 @@ class Component extends DCLogic {
     nav.style.pointerEvents = '';
   }
   initCollapsibles() {
-    const isMobile = window.innerWidth <= 860;
-    document.querySelectorAll('.csec').forEach(csec => {
-      const body = csec.querySelector('.csBody');
-      const heading = csec.querySelector('.klabel, .klsub');
-      const existing = csec.querySelector(':scope > .csCollapseBtn');
-      if (!body || !heading) return;
-      const label = heading.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-      const isOverview = /^OVERVIEW$/i.test(label);
-      const hasMedia = !!csec.querySelector('img, video, iframe');
-      const hasDiagram = !!csec.querySelector('svg, .wdDiag, .diagram');
-      const isDefaultDiagram = hasDiagram && (/^SYSTEM$/i.test(label) || /^APPROACH$/i.test(label));
-      const shouldCollapse = isMobile && !isOverview && !hasMedia;
-      if (!shouldCollapse) {
-        csec.classList.remove('csCollapse', 'csOpen');
-        if (existing) existing.remove();
-        return;
-      }
+    document.querySelectorAll('.csec .klsub').forEach(sub => {
+      const csec = sub.closest('.csec');
+      if (!csec || csec.classList.contains('csCollapse')) return;
+      const label = sub.textContent.replace(/\s+/g,' ').trim();
       csec.classList.add('csCollapse');
-      if (existing) return;
-      csec.classList.toggle('csOpen', isDefaultDiagram);
-      const btn = document.createElement('button');
-      btn.className = 'csCollapseBtn';
-      btn.setAttribute('type', 'button');
-      btn.setAttribute('aria-expanded', isDefaultDiagram ? 'true' : 'false');
-      btn.innerHTML = '<span class="csCBLabel">' + label + '</span><span class="csCBIcon">' + (isDefaultDiagram ? '\u2212' : '+') + '</span>';
-      btn.addEventListener('click', () => {
-        const open = csec.classList.toggle('csOpen');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.querySelector('.csCBIcon').textContent = open ? '\u2212' : '+';
-      });
-      csec.insertBefore(btn, body);
+      const body = csec.querySelector('.csBody');
+      if (body) {
+        const btn = document.createElement('button');
+        btn.className = 'csCollapseBtn';
+        btn.innerHTML = '<span class="csCBLabel">' + label + '</span><span class="csCBIcon">+</span>';
+        btn.addEventListener('click', () => {
+          const open = csec.classList.toggle('csOpen');
+          btn.querySelector('.csCBIcon').textContent = open ? '\u2212' : '+';
+        });
+        csec.insertBefore(btn, body);
+      }
     });
   }
   positionSideNav() {
@@ -1415,6 +1209,7 @@ class Component extends DCLogic {
       }
     };
     items.forEach((el,i) => el.addEventListener('click', () => show(i)));
+    // Pre-render all cards to find max height, then fix wrapper
     const wrap = document.querySelector('.abTlWrap');
     if (wrap && card) {
       let maxH = 0;
@@ -1430,13 +1225,15 @@ class Component extends DCLogic {
     show(0);
     if (!isMob && card) card.style.display='';
     else if (card) card.style.display='none';
+    // pulse handled by CSS animation on :not(.cur)
   }
   componentDidMount() {
     setTimeout(() => { this.positionSideNav(); this.initTimeline(); this.initChapterNav(this.state.page); this.initCollapsibles(); }, 150);
     this._animateYearScramble();
-    window.addEventListener('resize', () => { this.positionSideNav(); this.initTimeline(); this.initCollapsibles(); }, { passive: true });
+    window.addEventListener('resize', () => { this.positionSideNav(); this.initTimeline(); }, { passive: true });
     window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
     this.handleScroll();
+    try { if (localStorage.getItem('lm_unlocked') === '1') this.setState({ unlocked: true }); } catch (e) {}
     try { const a = JSON.parse(localStorage.getItem('lm_a11y') || 'null'); if (a) this.setState({ a11y: Object.assign({ lg: false, contrast: false, motion: false, underline: false }, a) }); } catch (e) {}
     const t = 'light';
     try { localStorage.setItem('lm_theme', 'light'); } catch (e) {}
@@ -1454,6 +1251,7 @@ class Component extends DCLogic {
     const delay = 600;
     const duration = 2400;
     const rnd = () => chars[Math.floor(Math.random() * chars.length)];
+    // Create 4 fixed-width slots
     el.innerHTML = '';
     const slots = [0,1,2,3].map(() => {
       const s = document.createElement('span');
@@ -1490,7 +1288,21 @@ class Component extends DCLogic {
     try { localStorage.setItem('lm_theme', t); } catch (e) {}
   }
   behanceUrl() { return this.props.behanceUrl ?? ''; }
+  password() { return this.props.behancePassword ?? ''; }
   openBehance() { if (this.behanceUrl()) { try { window.open(this.behanceUrl(), '_blank'); } catch (e) {} } }
+  openGate() {
+    this.openBehance();
+  }
+  closeGate() { this.setState({ gateOpen: false }); }
+  submitGate() {
+    if (this.state.val.trim() === this.password()) {
+      try { localStorage.setItem('lm_unlocked', '1'); } catch (e) {}
+      this.setState({ unlocked: true, gateOpen: false });
+      this.openBehance();
+    } else {
+      this.setState({ err: true });
+    }
+  }
   toggleSettings() { this.setState(s => ({ settOpen: !s.settOpen, a11yOpen: false })); }
   closeSettings() { this.setState({ settOpen: false }); }
   toggleA11yPanel() { this.setState(s => ({ a11yOpen: !s.a11yOpen })); }
@@ -1558,7 +1370,10 @@ class Component extends DCLogic {
       goCaseFishMob: () => { this.go('fish'); this.setState({ mobOpen: false }); },
       heroBarStatus: t.heroBarStatus,
       mobBackdropCls: this.state.mobOpen ? 'mobBackdrop open' : 'mobBackdrop',
-      openGate: () => this.openBehance(),
+      openGate: () => this.openBehance(), closeGate: () => this.closeGate(), submitGate: () => this.submitGate(),
+      gateOpen: this.state.gateOpen, gateErr: this.state.err,
+      onVal: (e) => this.setState({ val: e.target.value, err: false }),
+      onKey: (e) => { if (e.key === 'Enter') this.submitGate(); },
       resumeHref: 'uploads/Leon_Maimon_Product_CV_2026.pdf'
     };
   }
