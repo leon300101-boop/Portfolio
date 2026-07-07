@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+
+/* Desktop: align accent with case-study grid; mobile remains unchanged. */
+@media (max-width:860px){.csHeaderAccent{margin-left:0!important;}}
+/* Mobile case-study section headings: conventional, larger, clearer. */
+@media (max-width:860px){
+  .csec>div:first-child .klabel{
+    font-family:var(--font)!important;
+    font-size:18px!important;
+    font-weight:600!important;
+    line-height:1.25!important;
+    letter-spacing:.07em!important;
+    color:var(--fg)!important;
+    margin-bottom:18px!important;
+  }
+}/* Mobile reading scale: consistent body copy without enlarging labels or data. */
+@media (max-width:860px){
+  .csBody p,
+  .ulist li,
+  .pageLede,
+  .abNewProse p,
+  .procTlD,
+  .abTlCardDesc{
+    font-size:16px!important;
+    line-height:1.72!important;
+  }
+  .cmpL li,
+  .tradeT,
+  .sysDesc{
+    font-size:15px!important;
+    line-height:1.65!important;
+  }
+}/* Mobile case-study typography expansion v2. */
+@media (max-width:860px){
+  .csec .klsub{
+    font-family:var(--font)!important;
+    font-size:18px!important;
+    font-weight:600!important;
+    line-height:1.28!important;
+    letter-spacing:.065em!important;
+    color:var(--fg)!important;
+    opacity:1!important;
+    margin-bottom:18px!important;
+  }
+  .csCollapseBtn{
+    padding:14px 16px!important;
+  }
+  .csCBLabel{
+    font-family:var(--font)!important;
+    font-size:16px!important;
+    font-weight:600!important;
+    line-height:1.35!important;
+    letter-spacing:.055em!important;
+    color:var(--fg)!important;
+  }
+  .csH{
+    font-size:22px!important;
+    line-height:1.25!important;
+  }
+  .csBody p,
+  .ulist li,
+  .cmpL li,
+  .tradeT,
+  .sysDesc,
+  .pageLede,
+  .procTlD,
+  .abNewProse p,
+  .abTlCardDesc{
+    font-size:16px!important;
+    line-height:1.72!important;
+  }
+  .beatTbl td{
+    font-size:15px!important;
+    line-height:1.6!important;
+  }
+  .note,
+  .dcap{
+    font-size:14px!important;
+    line-height:1.6!important;
+  }
+  .cmpH,
+  .loopLabel,
+  .wdDiagSec{
+    font-size:13px!important;
+    line-height:1.45!important;
+    letter-spacing:.07em!important;
+  }
+}/* Mobile body-copy color: softer than black, still accessible. */
+@media (max-width:860px){
+  .site{--mobile-body:#c2c7cd;}
+  .site.light{--mobile-body:#50555e;}
+  .csBody p,
+  .ulist li,
+  .cmpL li,
+  .tradeT,
+  .sysDesc,
+  .pageLede,
+  .procTlD,
+  .abNewProse p,
+  .abTlCardDesc{
+    color:var(--mobile-body)!important;
+  }
+}
+/* Mobile dropdown visibility: hide the duplicated source heading only when collapsed. */
+@media (max-width:860px){
+  .csec.csCollapse>div:first-child{display:none!important;}
+  .csec.csCollapse>.csCollapseBtn{display:flex!important;}
+}
+/* Mobile diagram typography: readable hierarchy across all case studies. */
+@media (max-width:860px){
+  .wdDiagEye{
+    font-size:12px!important;
+    line-height:1.4!important;
+    letter-spacing:.11em!important;
+  }
+  .wdDiagTitle{
+    font-size:22px!important;
+    line-height:1.2!important;
+  }
+  .wdDiagIntro{
+    font-size:16px!important;
+    line-height:1.65!important;
+    margin-top:8px!important;
+    color:var(--mobile-body)!important;
+  }
+  .loopLabel,
+  .cmpH,
+  .wdDiagSec{
+    font-size:14px!important;
+    line-height:1.45!important;
+    letter-spacing:.07em!important;
+  }
+  .dnt,
+  .lnt,
+  .tradeD{
+    font-size:18px!important;
+    line-height:1.35!important;
+  }
+  .dns,
+  .lns,
+  .wdDiagFoot,
+  .wdPgSFlow{
+    font-size:14px!important;
+    line-height:1.6!important;
+  }
+  .wdDiagHdr{
+    padding:16px 18px 14px!important;
+  }
+  .wdDiagBody{
+    padding:16px 18px!important;
+  }
+}/* Compact closed dropdown rhythm; safe spacing returns when open. */
+@media (max-width:860px){
+  .csec.csCollapse{
+    padding:4px 0!important;
+    gap:0!important;
+  }
+  .csec.csCollapse.csOpen{
+    padding:8px 0 20px!important;
+    gap:14px!important;
+  }
+  .csec.csCollapse>.csCollapseBtn{
+    margin:0!important;
+    min-height:54px;
+  }
+  .csec.csCollapse>.csBody{
+    margin:0!important;
+    position:relative!important;
+  }
+  .csec.csCollapse.csOpen>.csBody{
+    margin-top:0!important;
+    overflow:hidden!important;
+  }
+}/* Selected-work card images: crisp, centered, and protected from edge cropping. */
+.cardImg img{
+  opacity:1!important;
+}
+.cardImg .caseLogo{
+  width:55%!important;
+  height:calc(100% - 24px)!important;
+  max-height:calc(100% - 24px)!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  margin:auto!important;
+  display:block!important;
+}
+.cardImg img[alt="Game Redesign"]{
+  filter:none!important;
+  object-position:center center!important;
+}/* Uploaded videos remain visible and responsive on mobile. */
+@media (max-width:640px){
+  .wdEvPh{
+    display:block!important;
+    min-height:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+  .wdEvPh video{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+}/* Desktop primary navigation stays high and stable in the viewport. */
+@media (min-width:861px){
+  .sideNav{
+    top:180px!important;
+    right:28px!important;
+    transform:none!important;
+  }
+}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Leon Maimon - Product Designer · Game UX · Systems</title>
+<meta name="description" content="Portfolio of Leon Maimon - product-oriented designer with depth in UX, game systems, player behavior, progression design, and cross-functional execution.">
+<meta property="og:title" content="Leon Maimon - Product Designer">
+<meta property="og:description" content="Product-oriented designer with depth in UX, game systems, player behavior, and cross-functional execution in live gaming products.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;rect width='32' height='32' rx='6' fill='%230a0b0d'/&gt;&lt;text x='16' y='23' font-family='sans-serif' font-weight='700' font-size='18' fill='%23e9a23b' text-anchor='middle'&gt;L&lt;/text&gt;&lt;/svg&gt;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Epilogue:wght@300;400;500;600;700&amp;family=VT323&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Syne:wght@700;800&amp;family=Schibsted+Grotesk:wght@400;500;600;700;800&amp;family=Sora:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:inherit;text-decoration:none}
+.site{--acc:oklch(.78 .22 42);--font:'Epilogue',sans-serif;--serif:'Instrument Serif',serif;--kfont:'VT323',monospace;--bg:#0e0c1a;--fg:#e7e8ea;--muted:#9aa0a8;--dim:#5a5468;--faint:#5a5468;--line:#141222;--line2:#121020;--panel:#161423;--panel2:#1c1a2c;--grid:#0f0d1c;--hdrbg:rgba(14,12,26,.88);--chiptext:#cbd0d6;--chipborder:#141222;--tagborder:#141222;--tagtext:#aab0b8;--btng:#1e1c2e;--btnghover:#2a2840;--ph1:#13111f;--ph2:#171525;--phborder:#141222;--phtext:#4a4660;--accfg:#0a0b0d;--lead:#c2c7cd;--cbody:#c2c7cd;background-color:var(--bg);color:var(--fg);font-family:var(--font);min-height:100vh;position:relative;overflow-x:hidden;transition:background-color .35s ease,color .35s ease}
+.light{--bg:#f3f2ed;--fg:#17181b;--muted:#54575e;--dim:#787b82;--faint:#9a9da4;--line:#eae9e2;--line2:#eeedea;--panel:#ffffff;--panel2:#ffffff;--grid:#e6e5dc;--hdrbg:rgba(243,242,237,.82);--chiptext:#3a3d44;--chipborder:#e8e7e0;--tagborder:#e5e4dc;--tagtext:#54575e;--btng:#dddcd4;--btnghover:#a6a59a;--ph1:#e7e6dd;--ph2:#efeee6;--phborder:#e5e4dc;--phtext:#999b90;--lead:#33353b;--cbody:#3a3d44}
+.accGreen{--acc:oklch(.86 .2 128)}
+.accAmber{--acc:oklch(.78 .22 42)}
+.accBlue{--acc:oklch(.72 .16 248)}
+.accMagenta{--acc:oklch(.72 .22 350)}
+.tfSchibsted{--font:'Schibsted Grotesk',sans-serif}
+.tfSora{--font:'Sora',sans-serif}
+.tfSpace{--font:'Space Grotesk',sans-serif}
+.gridOn{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px}
+.mono{font-family:var(--font)}
+.acc{color:var(--acc)}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px;position:relative}
+.page{opacity:1}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
+@keyframes scrollBounce{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(6px);opacity:1}}
+.wdScrollHint{display:flex;flex-direction:column;align-items:center;gap:4px;position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none}
+.wdScrollHint span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);opacity:.8}
+.wdScrollHint svg{animation:scrollBounce 1.6s ease-in-out infinite}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:transparent;backdrop-filter:none;border-bottom:none;transition:background .3s,border-color .3s}.hdr.scrolled{background:var(--hdrbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+@keyframes logoPeek{0%,55%{max-width:0;opacity:0}65%,80%{max-width:180px;opacity:1}93%,100%{max-width:0;opacity:0}}
+.logo{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:26px;letter-spacing:-.02em;cursor:pointer;display:inline-flex;align-items:baseline;line-height:1;overflow:hidden}.logoFull{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width 2s cubic-bezier(.22,1,.36,1),opacity 1.6s ease;display:inline-block}.logoFull2{transition-delay:.22s}.logo:hover .logoFull{max-width:120px;opacity:1}
+.logoL{color:var(--fg);flex-shrink:0}
+.logoRest{max-width:180px;overflow:hidden;opacity:1;white-space:nowrap;color:var(--fg)}
+.logo:hover .logoRest{max-width:180px;opacity:1}
+.nav{display:flex;align-items:center;gap:22px}
+.navItem{font-family:var(--font);font-size:13px;color:var(--muted);cursor:pointer;letter-spacing:.02em;transition:color .15s;height:34px;display:inline-flex;align-items:center;justify-content:center;padding:0 10px;border-radius:0;border:1px solid transparent;min-width:72px}
+.navItem:hover{color:var(--fg)}
+.navItem.on{color:var(--acc);border-color:var(--acc)}
+.themeBtn{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--btng);border-radius:0;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;transition:.15s;text-align:center;vertical-align:middle}
+.themeBtn:hover{border-color:var(--acc);color:var(--acc)}
+.resumeBtn{font-family:var(--font);font-size:12px;color:var(--acc);border:none;padding:0;display:inline-flex;gap:6px;align-items:center;justify-content:center;transition:.15s;letter-spacing:.02em;min-width:72px}
+.navSep{width:1px;height:16px;background:var(--btng);margin:0 4px;flex-shrink:0}
+.hero{padding:130px 0 76px;position:relative;isolation:isolate}
+.glow{position:absolute;top:-130px;left:-90px;width:560px;height:560px;border-radius:0;background:radial-gradient(circle,var(--acc),transparent 68%);opacity:.12;filter:blur(50px);pointer-events:none;z-index:-1}
+.metaRow{display:flex;flex-wrap:wrap;gap:30px;font-family:var(--font);font-size:12px;color:var(--dim);margin-bottom:32px}
+.metaRow b{color:var(--acc);font-weight:500}
+.h1{font-size:clamp(42px,7.8vw,112px);line-height:.78;font-weight:400;letter-spacing:-.025em;max-width:17ch;font-family:'Instrument Serif',serif;font-style:italic}.h1 em{color:var(--acc)}
+.h1 em{font-style:normal;color:var(--acc)}
+.lede{font-size:19px;line-height:1.62;color:var(--muted);max-width:60ch;margin-top:28px}
+.heroBtns{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn{font-family:var(--font);font-size:13px;padding:13px 20px;border-radius:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.15s}
+.btnP{background:var(--acc);color:var(--accfg);font-weight:500;border:1px solid var(--acc)}
+.btnP:hover{filter:brightness(1.1)}
+.btnG{border:1px solid var(--btng);color:var(--chiptext)}
+.btnG:hover{border-color:var(--btnghover)}
+.status{display:inline-flex;align-items:center;gap:10px;font-family:var(--font);font-size:12px;color:var(--muted);margin-top:34px}
+.blink{width:8px;height:8px;border-radius:0;background:var(--acc);animation:pulse 2.2s infinite}
+.secHead{display:flex;align-items:center;justify-content:space-between;font-family:var(--font);font-size:12px;color:var(--dim);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;letter-spacing:.06em}
+.secHead b{color:var(--acc);font-weight:500}
+.row{display:grid;grid-template-columns:48px 1.25fr 2fr 200px;gap:24px;align-items:center;padding:30px 18px 30px 0;border-bottom:1px solid var(--line2);border-left:3px solid transparent;padding-left:20px;cursor:pointer;transition:background .15s,border-color .15s}
+.row:hover{border-left-color:var(--acc);background:var(--panel)}.row:hover .rowBg{opacity:.22!important}
+.rnum{font-family:var(--font);font-size:13px;color:var(--faint)}
+.rt{font-size:28px;font-weight:400;letter-spacing:-.01em;font-family:'Instrument Serif',serif;font-style:italic}
+.rco{font-family:var(--font);font-size:12px;color:var(--acc);margin-top:7px}
+.rd{font-size:15px;line-height:1.55;color:var(--muted)}
+.rgo{display:flex;justify-content:flex-end;font-family:var(--font);font-size:12px}
+.rgo.open{color:var(--acc)}
+.rgo.lock{color:var(--dim)}
+.tag{font-family:var(--font);font-size:11px;color:var(--tagtext);border:1px solid var(--tagborder);border-radius:0;padding:4px 9px}
+.klabel{font-family:var(--kfont);font-size:16px;color:var(--dim);letter-spacing:.12em;margin-bottom:18px}.csHead .klabel{font-family:var(--font);font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:500}.klsub{font-family:var(--kfont);font-size:14px;color:var(--dim);letter-spacing:.1em;margin-bottom:18px;opacity:.38;padding-left:2px}
+.big{font-size:clamp(36px,4.4vw,62px);font-weight:400;letter-spacing:-.02em;line-height:.95;font-family:'Instrument Serif',serif;font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--font);font-size:12px;color:var(--chiptext);border:1px solid var(--chipborder);background:var(--panel);border-radius:0;padding:7px 12px}
+.lead{font-size:17px;line-height:1.65;color:var(--lead);max-width:64ch}
+.leadFirst{font-size:20px;font-weight:600;color:var(--fg);display:block;margin-bottom:18px;line-height:1.45;letter-spacing:-.01em}
+.aboutTop{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;flex-direction:row-reverse;justify-content:flex-end}
+.aboutTop .lead{flex:1 1 420px}
+.aboutPhoto{flex:0 0 220px;width:220px}
+.aboutPhoto img{width:220px;height:220px;object-fit:cover;border-radius:0;border:1px solid var(--chipborder);display:block;filter:grayscale(1);transition:filter .3s}
+.aboutPhoto img:hover{filter:grayscale(0)}
+.exp{display:grid;grid-template-columns:130px 1fr;gap:32px;padding:30px 0;border-top:1px solid var(--line2)}
+.expYr{font-family:var(--font);font-size:13px;color:var(--acc)}
+.expCo{font-size:23px;font-weight:600;letter-spacing:-.01em}
+.expRole{font-family:var(--font);font-size:13px;color:var(--muted);margin-top:5px}
+.ulist{margin-top:14px;list-style:none;display:flex;flex-direction:column;gap:9px}
+.ulist li{display:flex;gap:11px;font-size:15px;line-height:1.55;color:var(--muted)}
+.bul{color:var(--acc);font-family:var(--font);flex-shrink:0}
+.eduRow{display:grid;grid-template-columns:130px 1fr;gap:32px;padding:22px 0;border-top:1px solid var(--line2)}
+.eduT{font-size:19px;font-weight:400;font-family:'Instrument Serif',serif;font-style:italic}
+.eduM{font-family:var(--font);font-size:13px;color:var(--muted);margin-top:4px}
+.step{display:grid;grid-template-columns:96px 1fr;gap:34px;padding:36px 0;border-top:1px solid var(--line2)}
+.stepNum{font-family:var(--font);font-size:42px;font-weight:700;color:var(--acc);line-height:1}
+.stepT{font-size:25px;font-weight:400;letter-spacing:-.01em;font-family:'Instrument Serif',serif;font-style:italic}
+.stepD{font-size:16px;line-height:1.62;color:var(--muted);margin-top:11px;max-width:64ch}
+.stepTags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.caseHead{padding:84px 0 36px}
+.caseMeta{display:flex;flex-wrap:wrap;gap:30px;margin-top:26px;font-family:var(--font);font-size:12px;color:var(--dim)}
+.caseMeta b{color:var(--acc);font-weight:500;display:block;margin-top:5px;font-size:14px}
+.cover{height:430px;border-radius:0;margin-bottom:8px}
+.csec{display:grid;grid-template-columns:200px 1fr;gap:56px;padding:72px 0;border-top:1px solid var(--line2)}
+.csBody p{font-size:15px;line-height:1.82;color:var(--cbody);max-width:62ch}
+.csBody p+p{margin-top:24px}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}@media(max-width:600px){.shots{grid-template-columns:1fr!important}}
+.shot{height:auto;border-radius:0}
+.note{font-family:var(--font);font-size:13px;color:var(--dim);margin-top:18px;padding-top:16px;border-top:1px solid var(--line2)}
+.back{font-family:var(--font);font-size:13px;color:var(--muted);cursor:pointer;display:inline-flex;gap:8px;align-items:center;padding:8px 16px;border:1px solid var(--line);transition:color .15s,border-color .15s}
+.back:hover{color:var(--acc);border-color:var(--acc)}
+.caseNav{display:flex;align-items:center;justify-content:space-between;padding:28px 0 0;border-top:1px solid var(--line2);margin-top:12px;font-family:var(--font);font-size:13px}
+.caseNavBtn{color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:8px;transition:color .15s,border-color .15s;border:1px solid var(--line);padding:8px 16px}
+.caseNavBtn:hover{color:var(--acc);border-color:var(--acc)}
+.caseNavBtn.disabled{opacity:0;pointer-events:none}
+.loopCard{margin-bottom:14px;padding:18px 20px;border:1px solid var(--chipborder);background:transparent;border-radius:0}
+.loopLabel{font-family:var(--font);font-size:11px;letter-spacing:.06em;color:var(--acc);margin-bottom:14px}
+.loopNodes{display:flex;align-items:stretch;flex-wrap:wrap;gap:0}
+.loopNode{flex:1 1 110px;min-width:110px;padding:10px 14px;border:1px solid var(--chipborder);background:var(--panel2);border-radius:0}
+.lnt{font-weight:600;font-size:15px;letter-spacing:-.01em}
+.lns{font-size:12px;color:var(--dim);margin-top:5px;line-height:1.4}
+.baChain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-top:8px}
+.beatTbl{width:100%;border-collapse:collapse;margin-top:4px}
+.beatTbl td{padding:10px 0;font-size:14px;line-height:1.5;color:var(--muted);vertical-align:top;border-top:1px solid var(--line2)}
+.beatTbl td:first-child{color:var(--acc);font-family:var(--font);font-size:12px;white-space:nowrap;padding-right:24px;width:150px;letter-spacing:.02em}
+.beatTbl td:last-child{font-family:var(--font);font-size:13px;color:var(--dim)}
+.diagram{margin-top:18px}
+.dloop{display:flex;align-items:stretch;flex-wrap:wrap;gap:0}
+.dnode{flex:1 1 150px;min-width:150px;border:1px solid var(--chipborder);background:transparent;border-radius:0;padding:15px 16px}.dloop .dnode:nth-child(1){background:rgba(233,162,59,.03)}.dloop .dnode:nth-child(3){background:rgba(233,162,59,.06)}.dloop .dnode:nth-child(5){background:rgba(233,162,59,.09)}.dloop .dnode:nth-child(7){background:rgba(233,162,59,.12)}.dloop .dnode:nth-child(9){background:rgba(233,162,59,.15)}
+.dnum{font-family:var(--font);font-size:12px;color:var(--acc)}
+.dnt{font-weight:600;font-size:16px;margin-top:7px;letter-spacing:-.01em}
+.dns{font-size:12.5px;color:var(--dim);margin-top:6px;line-height:1.45}
+.darrow{display:flex;align-items:center;justify-content:center;color:var(--acc);font-family:var(--font);font-size:11px;padding:0 8px;flex:0 0 26px}
+.dcap{font-family:var(--font);font-size:12.5px;color:var(--dim);margin-top:16px;display:flex;gap:8px;align-items:center}
+.dsub{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+.cmpCol{border:1px solid var(--chipborder);background:var(--panel);border-radius:0;padding:18px 20px}
+.cmpH{font-family:var(--font);font-size:12px;color:var(--acc);letter-spacing:.04em;margin-bottom:13px}
+.cmpL{list-style:none;display:flex;flex-direction:column;gap:9px}
+.cmpL li{font-size:14px;line-height:1.5;color:var(--muted);display:flex;gap:9px}
+.trade{margin-top:6px}
+.tradeRow{border-top:1px solid var(--line2);padding:16px 0}
+.tradeD{font-size:17px;font-weight:600;color:var(--fg);letter-spacing:-.01em}
+.tradeT{font-size:14px;line-height:1.55;color:var(--muted);margin-top:6px}
+.tradeT b{color:var(--acc);font-weight:500}
+.video{position:relative;width:100%;aspect-ratio:16/9;border-radius:0;overflow:hidden;border:1px solid var(--phborder);background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ph{position:relative;display:flex;align-items:flex-end;background:repeating-linear-gradient(135deg,var(--ph1) 0 12px,var(--ph2) 12px 24px);border:1px solid var(--phborder)}
+.ph span{font-family:var(--font);font-size:11px;color:var(--phtext);padding:11px 13px;letter-spacing:.02em}
+.foot{border-top:1px solid var(--line);margin-top:-60px;padding:60px 0 48px;background:var(--bg)}
+.footGrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+.footBig{font-size:clamp(36px,4.6vw,60px);font-weight:700;letter-spacing:-.032em;line-height:1}
+.footBig em{font-style:normal;color:var(--acc)}
+.footR{text-align:left;font-family:var(--font);font-size:14px;line-height:2.1;color:var(--muted)}
+.mail{color:var(--acc)}
+.footLink{cursor:pointer;transition:color .15s}
+.footLink:hover{color:var(--acc)}
+.lockg{font-size:11px;color:var(--faint);margin-left:5px}
+.mX{cursor:pointer;color:var(--dim);font-size:18px;line-height:1}
+.mX:hover{color:var(--fg)}
+.settBtn{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:0;color:var(--muted);cursor:pointer;transition:.15s;flex-shrink:0}
+.settBtn:hover{border-color:var(--acc);color:var(--acc)}
+.settPanel{display:none;position:fixed;right:24px;top:64px;z-index:71;width:296px;background:var(--panel);border:1px solid var(--chipborder);border-radius:0;padding:18px 20px 14px;font-family:var(--font);box-shadow:0 14px 44px rgba(0,0,0,.42);max-height:80vh;overflow-y:auto}
+.settPanel.open{display:block}
+.waveDivider{display:flex;justify-content:center;padding:28px 0}.csH{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--fg);margin-bottom:14px}
+.settDivider{height:1px;background:var(--line2);margin:10px 0}
+.a11yPanel{position:fixed;right:24px;top:66px;bottom:auto;z-index:71;width:284px;background:var(--panel);border:1px solid var(--chipborder);border-radius:0;padding:18px 20px 14px;font-family:var(--font);box-shadow:0 14px 44px rgba(0,0,0,.42)}
+.a11yHead{font-size:12px;color:var(--acc);letter-spacing:.04em;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.a11yRow{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line2);cursor:pointer;font-size:13px;color:var(--muted);transition:color .15s}
+.a11yRow:hover{color:var(--fg)}
+.a11yRow.on{color:var(--fg)}
+.a11ySw{width:34px;height:20px;border-radius:0;border:1px solid var(--btng);background:transparent;position:relative;flex-shrink:0;transition:.15s}
+.a11yRow.on .a11ySw{background:var(--acc);border-color:var(--acc)}
+.a11ySwDot{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:0;background:var(--muted);transition:.15s}
+.a11yRow.on .a11ySwDot{left:16px;background:var(--accfg)}
+.a11yReset{margin-top:12px;font-size:11px;color:var(--dim);cursor:pointer}
+.a11yReset:hover{color:var(--acc)}
+.a11y-lg{zoom:1.12}
+.a11y-underline a{text-decoration:underline}
+.a11y-contrast{--muted:var(--fg);--dim:var(--fg);--cbody:var(--fg);--lead:var(--fg);--tagtext:var(--fg);--chiptext:var(--fg);--faint:var(--muted)}
+.a11y-motion .grain{display:none}
+.a11y-motion .blink{animation:none}
+.a11y-motion *{animation-duration:0s!important;transition-duration:0s!important}
+
+/* ── RESPONSIVE ── */
+.burgerBtn{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:34px;height:34px;cursor:pointer;border:1px solid var(--btng);border-radius:0;transition:.15s}
+.burgerBtn:hover{border-color:var(--acc)}
+.burgerLine{width:16px;height:1.5px;background:var(--fg);border-radius:0;transition:transform .22s,opacity .22s,background .22s}
+.burgerBtn.open .burgerLine{background:var(--acc)}
+.burgerBtn.open .burgerLine:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burgerBtn.open .burgerLine:nth-child(2){opacity:0;transform:scaleX(0)}
+.burgerBtn.open .burgerLine:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobBackdrop{display:none;position:fixed;inset:0;z-index:79;background:rgba(0,0,0,.72);transition:opacity .25s}
+.mobBackdrop.open{display:block}
+.mobMenu{position:fixed;top:0;right:0;bottom:0;z-index:39;width:min(320px,85vw);background:var(--panel);border-left:1px solid var(--line);padding:80px 32px 40px 28px;flex-direction:column;gap:0;overflow-y:auto;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex}
+.mobMenu.open{transform:translateX(0)}
+.mobLogo{font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--fg);margin-bottom:32px;padding-bottom:0;border-bottom:none}
+.mobLogo b{color:var(--acc)}
+.mobNavItem{font-family:var(--font);font-size:20px;font-weight:600;letter-spacing:-.018em;color:var(--muted);cursor:pointer;padding:20px 0;border-bottom:1px solid var(--line2);transition:color .15s,border-left-color .15s;border-left:3px solid transparent;margin-left:-3px;padding-left:12px}
+.mobNavItem:hover{color:var(--fg)}
+.mobNavItem.on{color:var(--acc);border-left-color:var(--acc)}
+.mobResume{margin-top:36px;display:inline-flex}
+.mobFoot{margin-top:auto;padding-top:32px;padding-bottom:80px;font-family:var(--font);font-size:12px;color:var(--dim);display:flex;align-items:center;gap:10px;padding-left:12px;margin-left:-3px}
+.mobThemeRow{display:flex;align-items:center;justify-content:space-between;padding:20px 0 20px 12px;border-bottom:1px solid var(--line2);font-family:var(--font);font-size:13px;color:var(--muted);margin-left:-3px}
+@keyframes mobIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.mobMenu.open .mobNavItem:nth-child(2){animation:mobIn .22s .06s both}
+.mobMenu.open .mobNavItem:nth-child(3){animation:mobIn .22s .12s both}
+.mobMenu.open .mobNavItem:nth-child(4){animation:mobIn .22s .18s both}
+.mobMenu.open .mobNavItem:nth-child(5){animation:mobIn .22s .24s both}
+.mobMenu.open .mobResume{animation:mobIn .22s .30s both}
+@media(max-width:860px){
+.wrap{padding:0 24px}
+.hdr{padding:14px 24px}
+.nav{display:none}
+.burgerBtn{display:flex}
+.resumeBtn{display:none}
+.settBtn{display:none}
+.hero{padding:90px 0 60px}
+.heroMono{margin-left:0!important}
+.h1{margin-left:0!important}
+.heroBar{margin-left:0!important}
+.row{grid-template-columns:36px 1fr;gap:14px}
+.rd,.rgo{display:none}
+.rt{font-size:21px}
+.csec{grid-template-columns:1fr;gap:20px}
+.klabel{margin-bottom:8px;font-size:11px}.klsub{margin-bottom:6px;font-size:9px;opacity:.38}
+.cmp{grid-template-columns:1fr}
+.shots{grid-template-columns:1fr}
+.exp{grid-template-columns:1fr;gap:6px}
+.expYr{font-size:12px}
+.eduRow{grid-template-columns:1fr;gap:6px}
+.step{grid-template-columns:1fr;gap:12px}
+.stepNum{font-size:30px}
+.aboutTop{flex-direction:column;gap:28px}
+.aboutPhoto{flex:0 0 auto;width:100%}
+.aboutPhoto img{width:100%;height:240px}
+.footGrid{flex-direction:column;align-items:flex-start;gap:32px}.footColR{border-left:none!important;padding-left:0!important}.footBig{font-size:38px!important;max-width:none!important;width:fit-content}.footLink{font-size:15px!important;margin-bottom:14px!important}.footColHd{font-size:11px!important;letter-spacing:.1em!important}
+.footR{text-align:left}
+.hero{padding:130px 0 60px}
+.h1{font-size:72px;line-height:.88}
+.heroMono{display:none!important}
+.heroBootMob{display:flex!important}
+.wrap.hero{align-items:flex-start;text-align:left;min-height:calc(100vh - 220px);justify-content:flex-start;padding-top:clamp(100px,26vh,180px);padding-bottom:0}
+.h1{text-align:left!important}
+.heroBootMob{align-items:flex-start!important;text-align:left!important}
+.h1{margin-left:0!important;text-align:center}
+.heroBar{margin-left:0!important;max-width:280px;margin-top:24px;margin-bottom:0}
+.heroBarMeta{display:flex;justify-content:space-between}
+.heroBarLeft,.heroBarStatus{display:block}
+.lede{font-size:16px}
+.caseHead{padding:56px 0 28px}
+.cover{height:240px}
+.loopNodes{flex-direction:column}
+.dloop{flex-direction:column}
+.darrow{transform:rotate(90deg)}
+.baChain{flex-direction:column}
+.caseNav{font-size:12px;gap:12px}
+.a11yBtn{right:16px;bottom:16px}
+.a11yPanel{left:16px;right:16px;top:62px;bottom:auto;width:auto;max-height:70vh;overflow-y:auto}
+}
+
+@media(max-width:540px){
+.wrap{padding:0 16px}
+.hdr{padding:12px 16px}
+.nav{gap:10px}
+.navItem{font-size:12px}
+.h1{letter-spacing:-.028em}
+.row{padding:22px 14px 22px 14px}
+.btn{padding:11px 14px;font-size:12px;white-space:nowrap}
+.heroBtns{gap:10px;flex-wrap:nowrap}
+.big{font-size:28px}
+.lead{font-size:17px}
+.csBody p{font-size:12px}
+.stepT{font-size:20px}
+.stepD{font-size:14px}
+.expCo{font-size:19px}
+.shot{height:auto}
+.caseMeta{gap:16px}
+.tradeD{font-size:15px}
+.beatTbl td{font-size:13px}
+.beatTbl td:first-child{width:120px;padding-right:14px}
+.chips{overflow-x:hidden;flex-wrap:nowrap;animation:chipScroll 28s linear infinite;width:max-content;gap:8px}
+.chipsWrap:hover .chips{animation-play-state:paused}
+.chip{flex-shrink:0}
+.metaRow{flex-direction:column;gap:8px}
+}
+@media(min-width:861px){.wrap.hero + .wrap{margin-top:-32px}}
+@media(max-width:860px){.systemsWrap{padding-top:32px!important}.wrap.hero + .wrap{padding-top:28px}}
+@keyframes chipScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.chipsDup{display:contents}
+@media(min-width:861px){.chipsDup{display:none}}
+.chipsWrap{overflow:hidden;direction:ltr}
+.langBtn{font-family:var(--font);font-size:13px;color:var(--muted);border:1px solid var(--btng);width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:0;cursor:pointer;letter-spacing:.03em;transition:.15s;line-height:1;user-select:none}
+.langBtn:hover{border-color:var(--acc);color:var(--acc)}
+.langHidden{display:none!important}
+.mobLangBtn{font-family:var(--font);font-size:13px;color:var(--muted);cursor:pointer;letter-spacing:.04em;margin-top:24px;display:inline-block;transition:color .15s}
+.mobLangBtn:hover{color:var(--acc)}
+.rtl .exp{direction:rtl}
+.rtl .step{direction:rtl}
+.rtl .csec{direction:rtl}
+.rtl .mobNavItem{border-left:none;border-right:3px solid transparent;padding-left:0;padding-right:14px}
+.rtl .mobNavItem.on{border-right-color:var(--acc);border-left-color:transparent}
+/* ═══ DIRECTION G ═══ */
+.hdrR{display:flex;align-items:center;gap:10px}.themeToggleBtn{width:34px;height:34px;border:1px solid var(--btng);border-radius:0;background:none;color:var(--muted);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,color .15s}.themeToggleBtn:hover{border-color:var(--acc);color:var(--acc)}
+.sideNav{position:fixed;right:28px;top:var(--sideNavTop,220px);z-index:50;display:flex;flex-direction:column;align-items:flex-end;gap:2px;padding:10px 12px;border-radius:0;background:none;backdrop-filter:none}.csLeftNav{position:fixed;left:20px;top:calc(50% - 2px);transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 0}.csLeftNav .cdLabel{text-shadow:0 0 8px var(--bg),0 0 16px var(--bg)}.csChapNavHidden{display:none!important}.csChapDot{display:flex;align-items:center;gap:10px;padding:4px 0;cursor:pointer;text-decoration:none}.csChapDot .cdLabel{font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;color:var(--dim);transition:color .2s,font-size .2s;white-space:nowrap;line-height:1.3}.csChapDot.cur .cdLabel{color:var(--acc)!important;font-weight:600!important}.csChapDot:hover .cdLabel{color:var(--fg)!important}.csChapDot .cdDot{width:5px;height:5px;background:var(--line);flex-shrink:0;transition:width .15s,background .15s}.csChapDot.cur .cdDot{width:10px;background:var(--acc)}.csChapDot:hover .cdDot{background:var(--muted)}.sideNav .sni{color:var(--muted)!important;font-size:22px!important;font-weight:500!important}.sideNav .sni{font-family:'Instrument Serif',serif!important;font-style:italic!important;font-size:21px!important;color:var(--dim)!important;cursor:pointer;padding:4px 8px!important;transition:color .15s;letter-spacing:-.01em!important;text-decoration:none!important;display:block!important;white-space:nowrap;text-align:right!important;background:none!important;border:none!important;margin:0!important;line-height:1.3}.sideNav .sni:hover{color:#fff!important;font-weight:700!important;mix-blend-mode:difference!important;position:relative!important;z-index:1!important}.sideNavLight .sni{color:#1a1828!important;text-shadow:0 0 8px rgba(255,255,255,.8),0 0 16px rgba(255,255,255,.8)!important}.sideNavLight .sni:hover{color:#0a0914!important}.sideNav .sni.on{color:var(--acc)!important;font-weight:700!important}.burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border-radius:0;transition:.15s}
+.burger span{display:block;height:1.5px;background:var(--fg);border-radius:0;transition:.25s}
+.burger span:first-child{width:22px}.burger span:last-child{width:14px}
+.burger.open span:first-child{width:18px;transform:rotate(45deg) translate(4px,5px)}
+.burger.open span:last-child{width:18px;transform:rotate(-45deg) translate(4px,-5px)}
+.gMenu{position:fixed;top:0;right:0;bottom:0;width:min(300px,88vw);z-index:80;background:var(--bg);border-left:1px solid var(--line);display:flex;flex-direction:column;padding:22px 28px 28px;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.gMenu.open{transform:none;pointer-events:auto}
+.gMenuTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+.gMenuLogo{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:var(--acc);letter-spacing:-.02em}
+.gMenuClose{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--btng);border-radius:0;color:var(--muted);cursor:pointer;font-size:18px;transition:.15s;line-height:1}.gMenuClose:hover{border-color:var(--fg);color:var(--fg)}
+.menuNavItem{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(28px,4.5vw,44px);line-height:1.1;cursor:pointer;color:var(--muted);background:none;transition:.15s;display:block;padding:4px 0;text-decoration:none}
+.menuNavItem:hover{color:var(--fg)}
+.menuNavItem.on{color:var(--acc)!important}
+.menuNavItem.on em{color:var(--acc)}
+.menuNavItem em{font-style:italic}
+.menuCaseDiv{border-top:1px solid var(--line);margin-top:24px;padding-top:20px}
+.menuCaseLbl{font-family:var(--font);font-size:10px;letter-spacing:.14em;color:var(--dim);margin-bottom:14px;text-transform:uppercase;font-weight:500}.mobSett{overflow:hidden;max-height:0;transition:max-height .3s ease,opacity .2s ease;opacity:0;pointer-events:none}.mobSett.open{max-height:400px;opacity:1;pointer-events:auto}.mobSettInner{border-top:1px solid var(--line);padding:18px 0 4px}.mobSettHead{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--faint);margin-bottom:4px}.mobSettRow{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid var(--line2);cursor:pointer;font-size:13px;color:var(--muted);transition:color .15s}.mobSettRow:hover{color:var(--fg)}.mobSettRow.on{color:var(--fg)}.mobSettDivider{height:1px;background:var(--line2);margin:6px 0}
+.menuCaseItem{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--muted);background:none;cursor:pointer;padding:6px 0;transition:color .15s;display:block}
+.menuCaseItem:hover{color:var(--fg)}
+.menuFoot{border-top:1px solid var(--line);margin-top:16px;padding-top:14px;display:flex;align-items:center;justify-content:space-between;font-family:var(--font);font-size:10px;color:var(--faint);letter-spacing:.06em}
+.menuFootR{display:flex;gap:12px;align-items:center}
+.menuFootBtn{color:var(--dim);cursor:pointer;transition:color .15s;background:none;border:none;font-family:var(--font);font-size:10px;letter-spacing:.06em;padding:0;cursor:pointer}
+.menuFootBtn:hover{color:var(--acc)}
+@keyframes pgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes h1In{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes monoIn{from{opacity:0;letter-spacing:.22em}to{opacity:1;letter-spacing:.1em}}
+@keyframes barIn{from{opacity:0;transform:scaleX(.7);transform-origin:left}to{opacity:1;transform:scaleX(1)}}
+@keyframes barPulse{0%,100%{width:72%}50%{width:76%}}
+@keyframes barFill{from{width:0}to{width:100%}}
+.page{animation:pgIn .45s cubic-bezier(.22,1,.36,1) both}
+.page .heroMono{animation:monoIn .7s .08s cubic-bezier(.22,1,.36,1) both}
+.page .h1{animation:h1In .7s .18s cubic-bezier(.22,1,.36,1) both}
+.page .heroBar{animation:barIn .6s .38s cubic-bezier(.22,1,.36,1) both}
+.page .heroSt{animation:pgIn .5s .5s cubic-bezier(.22,1,.36,1) both}
+.heroMono{font-family:var(--font);font-size:11px;color:var(--faint);letter-spacing:.1em;margin-bottom:16px;margin-left:46px;display:block}.heroBootMob{display:none;flex-direction:column;align-items:center;gap:6px;margin-bottom:24px;text-align:center}.hbm1{font-family:var(--kfont);font-size:13px;letter-spacing:.1em;color:#2a3040}.hbm2{font-family:var(--kfont);font-size:13px;letter-spacing:.08em;color:var(--acc)}.heroBarLeft{font-size:10px;color:var(--dim);letter-spacing:.04em}
+.heroMono b{color:var(--acc)}
+.heroBar{max-width:520px;margin-bottom:0;margin-top:52px;margin-left:46px}
+.heroBarTrack{height:3px;background:var(--line);border-radius:0;overflow:hidden;margin-bottom:10px}
+.heroBarFill{height:100%;width:0;background:linear-gradient(90deg,var(--acc),oklch(.88 .18 78));border-radius:0;animation:barFill 2.2s 1s cubic-bezier(.22,1,.36,1) forwards}
+.heroBarMeta{display:flex;justify-content:space-between;font-family:var(--font);font-size:10px;color:var(--dim);letter-spacing:.06em}
+.heroBarStatus{color:var(--acc)}
+.heroSt{display:inline-flex;align-items:center;gap:10px;font-family:var(--font);font-size:11px;color:var(--dim)}
+.secHd{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:28px}
+.secHdL{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:var(--dim);letter-spacing:-.01em}
+.secHdR{font-family:var(--font);font-size:10px;color:var(--faint);letter-spacing:.06em}
+.secHdR b{color:var(--acc)}
+.cardsGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--panel);border-radius:0;overflow:hidden;border:1px solid rgba(255,255,255,.05);box-shadow:0 8px 40px rgba(0,0,0,.4);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 60px rgba(0,0,0,.5)}
+.cardImg{height:190px;overflow:hidden;position:relative}
+.cardImg img{width:100%;height:100%;object-fit:cover;opacity:.8;transition:transform .5s;display:block}
+.card:hover .cardImg img{transform:scale(1.04)}
+.cardImgGrad{display:none}
+.cardBody{padding:16px 20px 10px;display:flex;justify-content:space-between;align-items:flex-end}
+.cardTitle{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:20px;letter-spacing:-.01em;line-height:1.1}
+.cardMeta{font-family:var(--font);font-size:9px;color:var(--dim);letter-spacing:.07em;margin-top:5px;text-transform:uppercase}
+.cardArrow{font-family:var(--font);font-size:14px;color:var(--acc);flex-shrink:0;margin-left:12px;transition:transform .2s}
+.card:hover .cardArrow{transform:translateX(3px)}
+.cardChips{display:flex;flex-wrap:wrap;gap:0;padding:4px 20px 16px;align-items:center}
+.gchip{font-family:var(--font);font-size:9px;color:var(--muted);letter-spacing:.04em;padding:0 10px;position:relative}.gchip+.gchip::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);height:11px;width:1px;background:var(--dim)}.gchip:first-child{padding-left:0}
+.sysCard{opacity:.55;filter:grayscale(.4) brightness(.96);cursor:default;transition:transform .2s,box-shadow .2s,opacity .2s,filter .2s;overflow:visible;position:relative}.sysCard .sysInfoWrap{position:static}.sysCard .sysInfoBubble{position:absolute;top:0;left:0;right:0;width:auto;height:190px;bottom:auto;display:flex;align-items:center;padding:20px 24px;font-size:13px;line-height:1.65}.sysCard:hover{transform:translateY(-3px);box-shadow:0 16px 60px rgba(0,0,0,.5);opacity:.88;filter:grayscale(.1)}.sysCardImg{background:var(--ph1);display:flex;align-items:center;justify-content:center}.sysRow{display:none}
+.sysGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:4px}
+.sysNum{font-family:var(--font);font-size:11px;color:var(--faint);flex-shrink:0;width:30px;padding-top:3px}
+.sysBod{flex:1}
+.sysTitle{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;letter-spacing:-.01em;line-height:1.1;font-weight:400;color:var(--fg)}
+.sysCo{font-family:var(--font);font-size:9px;color:var(--acc);letter-spacing:.07em;margin-top:4px;text-transform:uppercase}
+.sysDesc{font-size:14px;line-height:1.6;color:var(--muted);margin-top:8px}
+.sysLock{display:inline-flex;align-items:center;gap:8px;cursor:default;margin-top:12px;position:relative}.sysInfoWrap{position:relative;display:inline-flex;align-items:center;cursor:default}.sysInfoBubble{position:absolute;bottom:calc(100% + 8px);right:0;left:auto;background:var(--panel);border:1px solid var(--line);padding:14px 16px;font-size:12px;line-height:1.65;color:var(--muted);width:280px;opacity:0;pointer-events:none;transition:opacity .15s;z-index:20}.sysInfoWrap:hover .sysInfoBubble{opacity:1;pointer-events:auto}.sysLockTip{font-family:var(--font);font-size:9px;color:var(--faint);letter-spacing:.04em;white-space:nowrap;opacity:0;transition:opacity .15s;background:var(--panel);border:1px solid var(--line);padding:3px 7px;position:absolute;bottom:calc(100% + 6px);left:0;pointer-events:none}.sysLock:hover .sysLockTip{opacity:1}
+.csnav{position:sticky;top:61px;z-index:30;background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;overflow-x:auto;padding:0 24px;scrollbar-width:none}
+.csnav::-webkit-scrollbar{display:none}
+.csnavBack{font-family:var(--font);font-size:10px;color:var(--dim);letter-spacing:.06em;cursor:pointer;padding:13px 16px 13px 0;border-right:1px solid var(--line);margin-right:16px;flex-shrink:0;white-space:nowrap;transition:color .15s}
+.csnavBack:hover{color:var(--fg)}
+.csnavSec{font-family:var(--kfont);font-size:12px;letter-spacing:.1em;color:var(--faint);cursor:pointer;padding:12px 10px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;flex-shrink:0;text-decoration:none;display:block}
+.csnavSec:hover{color:var(--muted)}
+.csHead{padding:72px 0 36px}
+.csTitle{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(40px,5.5vw,72px);letter-spacing:-.025em;line-height:.91;max-width:16ch;white-space:nowrap}
+.csMeta{display:flex;flex-wrap:wrap;gap:0;margin-top:20px;align-items:center}
+.csMetaTag{font-family:var(--font);font-size:11px;color:var(--muted);border:none;padding:0 12px;letter-spacing:.03em;position:relative}.csMetaTag:first-child{padding-left:0}.csMetaTag+.csMetaTag::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);height:12px;width:1px;background:var(--dim)}
+.csBack{font-family:var(--font);font-size:11px;color:var(--dim);letter-spacing:.06em;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:60px 0 0;transition:color .15s}.csBack:hover{color:var(--fg)}.csBackLbl{font-family:var(--font);font-size:11px;color:var(--faint);letter-spacing:.08em;padding:60px 0 0 16px;display:inline-flex;align-items:center}.csCover{border-radius:0;overflow:hidden;margin-bottom:8px}[id^="cs-"]{scroll-margin-top:80px}@media(min-width:861px){.csCover{margin-left:70px;margin-right:70px}}
+.csCover img{width:100%;height:300px;object-fit:cover;display:block}
+.csec .csBody>svg{--dim:#9aa0a8;background:#100e1c;border:1px solid var(--line);border-radius:0;padding:16px;box-sizing:border-box}
+.aboutTop{gap:40px;flex-direction:row;justify-content:flex-start}
+.aboutTop .lead{flex:1 1 400px;font-size:16px;line-height:1.72}
+.leadFirst{font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;color:var(--fg);display:block;margin-bottom:16px;line-height:1.35;letter-spacing:-.01em}
+.footBig{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.025em;max-width:18ch;margin-bottom:28px}
+.footBig em{color:var(--acc)}.footColR{display:flex;flex-direction:column;gap:24px;border-left:1px solid var(--line);padding-left:48px}.footColSec{}.footColHd{font-size:9px;letter-spacing:.12em;color:var(--faint);text-transform:uppercase;margin-bottom:10px}
+.mail{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--acc);display:block;margin-bottom:14px;transition:opacity .15s}
+.mail:hover{opacity:.8}
+.footLink{font-family:var(--font);font-size:12px;color:var(--dim);letter-spacing:.04em;display:block;margin-bottom:10px;transition:color .15s;text-decoration:none;cursor:pointer}
+.footLink:hover{color:var(--fg)}
+.footLink .lockg{font-size:10px;color:var(--faint);margin-left:6px}.contactIcon{width:48px;height:48px;border-radius:0;border:1px solid transparent;background:#17181b;color:#f3f2ed!important;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s;text-decoration:none;background:none;flex-shrink:0}.contactIcon:hover{border-color:var(--acc)}.contactIcon svg{display:block}
+.pageTitle{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(38px,5vw,66px);letter-spacing:-.025em;line-height:.93}.pageTitle em{color:var(--acc);font-style:normal}.pageLede{font-size:17px;line-height:1.72;color:var(--muted);max-width:60ch;margin-top:20px}.procTl{margin-top:48px}.procTlTrack{display:flex;gap:0;position:relative}.procTlTrack::before{content:'';position:absolute;top:19px;left:0;right:0;height:1px;background:var(--line)}.procTlItem{flex:1;padding-right:24px;padding-top:44px;position:relative}.procTlItem:last-child{padding-right:0}.procTlPip{width:7px;height:7px;background:var(--acc);position:absolute;top:15px;left:0}.procTlN{font-size:10px;font-weight:600;color:var(--acc);letter-spacing:.08em;margin-bottom:10px}.procTlT{font-family:'Instrument Serif',serif;font-style:italic;font-size:17px;color:var(--fg);line-height:1.25;margin-bottom:6px}.procTlD{font-size:12px;line-height:1.62;color:var(--muted)}
+/* NEW ABOUT */
+.abFullPhoto{width:100%;height:640px;overflow:hidden;position:relative}
+.abFullPhoto img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(1);display:block}
+.abFullPhoto::after{content:'';position:absolute;bottom:0;left:0;right:0;height:260px;background:linear-gradient(transparent 0%,rgba(var(--bg-rgb,243,242,237),.85) 60%,var(--bg) 100%)}
+.site:not(.light) .abFullPhoto::after{background:linear-gradient(transparent 0%,rgba(14,12,26,.85) 60%,var(--bg) 100%)}
+.abNew{padding:84px 40px 80px}
+.abIntroRow{display:flex;align-items:flex-end;gap:32px;margin-bottom:28px}
+.abGreetPhoto{width:160px;height:200px;overflow:hidden;flex-shrink:0;border:1px solid var(--line)}
+.abGreetPhoto img{width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:grayscale(1);display:block}
+.abIntroText{flex:1}
+.abGreetPhoto img{width:100%;height:100%;object-fit:cover;object-position:center 15%;filter:grayscale(1);display:block}
+@media(max-width:680px){.abGreetPhoto{float:none;width:calc(100% + 48px);height:calc(100vw);margin:0 -24px 0;position:relative;z-index:1}.abGreetPhoto::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(transparent,var(--bg))}.abNew{padding:52px 24px 80px}.abIntroRow{flex-direction:column;align-items:flex-start;gap:0;position:relative}.abNewGreet{position:absolute;top:calc(100vw - 72px);left:0;right:0;z-index:3;font-size:52px!important;text-align:left;padding:0;transform:none}}
+.abNewTop{display:grid;grid-template-columns:220px 1fr;gap:0;margin-bottom:0;border:1px solid var(--line)}
+.abNewTopLeft{padding:40px 0 40px 40px;display:flex;flex-direction:column;justify-content:center}
+.abNewPhoto{overflow:hidden;grid-row:1}
+.abNewPhoto img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1);display:block;min-height:260px}
+/* Full grid: photo col + content col spanning all sections */
+.abGrid{display:grid;grid-template-columns:220px 1fr;gap:0;border:1px solid var(--line)}
+.abGridPhoto{overflow:hidden;border-right:1px solid var(--line)}
+.abGridPhoto img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1);display:block;min-height:100%}
+.abGridContent{padding:40px 0 40px 40px;display:flex;flex-direction:column}
+.abNewGreet{font-family:'Instrument Serif',serif;font-style:italic;font-size:48px;color:var(--fg);line-height:1;letter-spacing:-.02em}
+.abNewGreet em{color:var(--acc);font-style:normal}
+.abNewProse{margin-top:18px}.abNewProse p{font-size:15px;line-height:1.85;color:var(--muted);margin-bottom:14px;max-width:58ch}
+.abNewProse p strong{color:var(--fg);font-weight:600}
+.abNewCta{font-family:var(--font);font-size:12px;font-weight:500;color:var(--fg);background:var(--btng);border:1.5px solid var(--btng);border-radius:0;padding:11px 22px;cursor:pointer;margin-top:12px;display:inline-block;transition:.15s;text-decoration:none}
+.abNewCta:hover{background:var(--btnghover);border-color:var(--btnghover)}
+.abNewTl{margin-top:36px;position:relative;display:flex;align-items:flex-start;gap:0;padding-top:0}
+.abNewTlLine{position:absolute;top:36px;left:0;right:0;height:1px;background:var(--line)}
+.abNewTlItem{flex:1;display:flex;flex-direction:column;align-items:flex-start;position:relative;z-index:1;padding-right:8px}
+.abNewTlDot{width:9px;height:9px;border-radius:0;border:2px solid var(--line);background:var(--bg);margin-bottom:14px;flex-shrink:0}
+.abNewTlItem.cur .abNewTlDot{background:var(--acc);border-color:var(--acc)}
+.abNewTlItem.cur .abNewTlCo{color:var(--acc)}
+.abNewTlYr{font-family:var(--font);font-size:9px;color:var(--dim);letter-spacing:.06em;margin-bottom:5px}
+.abNewTlCo{font-size:12px;font-weight:700;color:var(--dim);margin-bottom:3px;display:flex;align-items:center;gap:4px}.abNewTlCo::after{content:'▾';font-size:9px;color:var(--faint);font-weight:400;transition:color .15s}.abNewTlItem.cur .abNewTlCo::after{content:'▴';color:var(--acc)}.abNewTlItem:hover .abNewTlCo::after{color:var(--acc)}
+.abNewTlRole{font-size:11px;color:var(--dim);line-height:1.4}
+.abNewTlItem{cursor:pointer;transition:.15s}.abNewTlItem:hover .abNewTlDot{border-color:var(--acc);transform:scale(1.5)}.abNewTlItem:hover .abNewTlCo{color:var(--acc)}.abNewTlItem.cur .abNewTlCo{color:var(--acc)}.abNewTlDot{transition:transform .2s,background .2s,border-color .2s}
+@keyframes sqPulse{0%,65%,100%{transform:scale(1);opacity:1}32%{transform:scale(1.8);opacity:.4}}
+#abTl .abNewTlItem.nextUp .abNewTlDot{animation:sqPulse 2s ease-in-out infinite}
+@keyframes cardSnap{0%{opacity:.6}100%{opacity:1}}
+.abTlWrap{height:280px;position:relative;overflow:visible}.abTlCard{display:block;position:absolute;top:68px;left:0;right:0;padding-top:14px;opacity:0;transition:opacity .25s}.abTlCard.show{opacity:1}
+.abTlAccent{height:5px;background:var(--acc);width:48px;margin-bottom:16px;transition:margin-left .3s cubic-bezier(.34,1.4,.64,1)}
+.abTlCard.snap{animation:cardSnap .3s ease-out}.abTlCardLeft{display:none}.abTlCardCo{font-size:14px;font-weight:700;color:var(--fg);margin-bottom:3px}.abTlCardYr{font-family:var(--font);font-size:9px;color:var(--dim);letter-spacing:.06em}.abTlCardRole{font-size:12.5px;font-weight:600;color:var(--acc);margin-bottom:6px}.abTlCardDesc{font-size:13px;color:var(--muted);line-height:1.7;max-width:68ch}.abTlCardTags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.abTlCardTag{font-family:var(--font);font-size:10px;color:var(--dim);border:1px solid var(--line);padding:3px 8px}
+.eduLangRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.site:not(.light) .contactIcon{background:#e7e8ea!important;color:#0e0c1a!important}
+.contactIcon svg{display:block;filter:brightness(0) invert(1)}
+.site:not(.light) .contactIcon svg{filter:brightness(0)}
+.eduNew{display:flex;position:relative;gap:0;z-index:2;background:var(--bg)}.eduNew::before{content:'';position:absolute;top:4px;left:0;right:0;height:1px;background:var(--line)}.eduNewItem{flex:1;display:flex;flex-direction:column;align-items:flex-start;padding-right:24px;position:relative;z-index:1}.eduNewYr{font-family:var(--font);font-size:9px;color:var(--dim);letter-spacing:.06em;margin:10px 0 6px}.eduNewTitle{font-family:var(--font);font-size:12px;font-weight:600;color:var(--dim);line-height:1.3;margin-bottom:4px}.eduNewInst{font-size:12px;color:var(--muted)}.eduLangItem{flex:0 0 auto;padding-right:0}
+@media(max-width:680px){.eduNew{flex-direction:column;gap:0}.eduNew::before{display:none}.eduNewItem{padding-right:0;padding-left:20px;padding-bottom:20px;border-left:1px solid var(--line)}.eduNewItem .abNewTlDot{position:absolute;left:-5px;top:3px}}
+.abTlMobDrop{padding:8px 0 16px;border-left:2px solid var(--acc);padding-left:12px;margin-top:4px}
+.abTlMobRole{font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;color:var(--fg);margin-bottom:5px}
+.abTlMobDesc{font-size:12px;color:var(--muted);line-height:1.65}
+@media(max-width:680px){
+.abFullPhoto{height:320px}
+.abNewGreet{font-size:36px}
+.abTlWrap{height:auto;overflow:visible}
+.abTlCard{position:static;margin-top:12px}
+.abNewProse p{font-size:14px;line-height:1.82}
+.abNewTl{flex-direction:column;border-top:none;padding-top:20px;margin-top:20px}
+.abNewTlLine{display:none}
+.abNewTlItem{flex:none;display:flex;gap:14px;align-items:flex-start;cursor:pointer;position:relative}
+.abNewTlDot{margin-bottom:0;margin-top:3px;flex-shrink:0}
+.abNewTlCo{font-size:13px}
+.abNewTlYr{font-size:9px}
+.abTlCard{grid-template-columns:1fr;margin-top:12px}
+.abTlCardLeft{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;margin-bottom:12px}
+.abNewTl::before{content:'';position:absolute;left:4px;top:0;bottom:0;width:1px;background:var(--line)}
+.abNewTl{position:relative}
+}
+.desktopOnly{display:flex}
+/* ── WILDLAND DIAGRAM COMPONENTS ──────────────────────── */
+.wdHeroWrap{position:relative;overflow:hidden;min-height:360px;margin:0 140px -160px 160px;pointer-events:none}
+.wdHeroBg{position:absolute;inset:0}
+.wdHeroBg img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.35;display:block}
+.wdHeroBg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 20%,transparent 75%,var(--bg) 100%)}
+/* diagram card */
+.wdDiag{border:1px solid var(--line);background:transparent;margin-bottom:0;font-family:var(--font)}
+.wdDiag+.wdDiag{margin-top:14px}
+.wdDiagHdr{padding:12px 16px 10px;border-bottom:1px solid var(--line);background:transparent}
+.wdDiagEye{font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.wdDiagEye b{color:var(--acc)}
+.wdDiagTitle{font-family:'Instrument Serif',var(--serif),serif;font-style:italic;font-size:16px;color:var(--fg);line-height:1.2}
+.wdDiagIntro{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+.wdDiagBody{padding:14px 16px}
+.wdDiagFoot{padding:8px 16px;border-top:1px solid var(--line);font-size:10px;color:var(--dim);line-height:1.5}
+.wdDiagSec{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:6px}
+/* node/flow */
+.wdNode{border:1px solid var(--line);background:transparent;padding:9px 14px;text-align:center;display:inline-flex;flex-direction:column;align-items:center;gap:2px;min-width:110px}
+.wdNode--primary{background:var(--acc);border-color:var(--acc);color:#0a0b0d}
+.wdNode--dim{background:transparent;border-style:dashed;color:var(--dim)}
+.wdNL{font-size:11px;line-height:1.3;color:inherit}
+.wdNS{font-size:9px;color:var(--dim);margin-top:1px}
+.wdNode--primary .wdNS{color:rgba(0,0,0,.45)}
+.wdArr{color:var(--dim);font-size:9px;padding:0 8px;flex-shrink:0;align-self:center;letter-spacing:0}
+.wdFlow{display:flex;align-items:center;flex-wrap:wrap;gap:2px}
+/* pipeline */
+.wdPipeWrap{overflow-x:auto}
+.wdPipe{display:flex;border:1px solid var(--line);overflow:hidden;min-width:max-content}
+.wdPipeCell{padding:9px 14px;text-align:center;border-left:1px solid var(--line);flex-shrink:0;min-width:6.5rem}
+.wdPipeCell:first-child{border-left:none}
+.wdPipeCell:nth-child(odd){background:transparent}
+.wdPipeCell:nth-child(even){background:transparent}
+.wdPipeCell--primary{background:var(--acc);color:#0a0b0d;border-color:var(--acc)}
+.wdPCL{font-size:10px;white-space:nowrap;color:inherit}
+.wdPCS{font-size:8.5px;color:var(--dim);margin-top:2px;white-space:nowrap}
+.wdPipeCell--primary .wdPCS{color:rgba(0,0,0,.4)}
+/* progression stack */
+.wdPgStack{display:flex;flex-direction:column;gap:5px}
+.wdPgRow{padding:11px 14px;border:1px solid var(--line);display:grid;grid-template-columns:26px 152px 1fr 60px;align-items:center;gap:10px}
+.wdPgRow:nth-child(1){background:var(--ph1)}
+.wdPgRow:nth-child(2){background:var(--panel)}
+.wdPgRow:nth-child(3){background:var(--ph2)}
+.wdPgSN{font-family:'Instrument Serif',var(--serif),serif;font-style:normal;font-size:20px;color:var(--acc);line-height:1}
+.wdPgSLabel{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.wdPgSFlow{font-size:11px;color:var(--cbody)}
+.wdPgSH{font-size:8.5px;color:var(--dim);text-align:right}
+@media(max-width:560px){.wdPgRow{grid-template-columns:26px 1fr}.wdPgSFlow,.wdPgSH{display:none}}
+/* iteration */
+.wdIterRow+.wdIterRow{margin-top:12px}
+.wdChips{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.wdChip{font-size:11px;padding:4px 10px;border:1px solid var(--line);background:var(--panel2);color:var(--cbody)}
+.wdChip--acc{background:rgba(233,162,59,.08);border-color:rgba(233,162,59,.22);color:var(--fg)}
+.wdIterTags{display:flex;flex-wrap:wrap;gap:3px;padding-top:10px;border-top:1px solid var(--line);margin-top:10px}
+.wdIterTag{font-size:8.5px;color:var(--dim);padding:2px 8px;background:var(--panel);border:1px solid var(--line)}
+/* evidence board */
+.wdEvGrid{display:grid;grid-template-columns:1.3fr 1fr;gap:10px}
+@media(max-width:540px){.wdEvGrid{grid-template-columns:1fr}}
+.wdEvPh{border:1px dashed var(--line);min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:var(--ph2)}
+.wdEvPhL{font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.wdEvPhS{font-size:9px;color:var(--faint)}
+.wdEvNote{border:1px solid var(--line);border-top:none;background:rgba(233,162,59,.06);padding:7px 10px}
+.wdEvNoteEye{font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin-bottom:2px}
+.wdEvNoteText{font-size:9px;color:var(--muted);line-height:1.5}
+.wdEvScopeHdr{font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.wdEvItem{display:flex;align-items:flex-start;gap:7px;padding:7px 0;border-bottom:1px solid var(--line)}
+.wdEvItem:last-child{border-bottom:none}
+.wdEvDot{width:5px;height:5px;background:var(--acc);flex-shrink:0;margin-top:4px}
+.wdEvItemL{font-size:11px;color:var(--fg);line-height:1.3}
+.wdEvItemS{font-size:9px;color:var(--dim);margin-top:1px;line-height:1.4}
+.wdEvProves{border:1px solid var(--line);background:transparent;padding:9px 13px;display:flex;align-items:baseline;gap:12px;margin-top:10px;flex-wrap:wrap}
+.wdEvProvesEye{font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);flex-shrink:0}
+.wdEvProvesText{font-family:'Instrument Serif',var(--serif),serif;font-style:italic;font-size:13px;color:var(--fg);line-height:1.4}
+/* streams */
+.wdStreams{display:flex;align-items:flex-start;gap:10px;border-left:2px solid var(--acc);padding-left:10px;margin-top:10px;flex-wrap:wrap}
+.wdStreamsEye{font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);flex-shrink:0;padding-top:2px}
+.wdStreamChips{display:flex;flex-wrap:wrap;gap:4px}
+.wdStreamChip{font-size:9px;padding:3px 9px;border:1px solid var(--line);background:var(--panel);color:var(--cbody)}
+/* potion in overview */
+.csec.csCollapse{padding-top:10px;padding-bottom:10px}.csec.csCollapse.csOpen{padding-top:20px;padding-bottom:20px}.csec.csCollapse>.csBody{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}.csec.csCollapse.csOpen>.csBody{max-height:8000px;overflow:hidden}.csec.csCollapse.csOpen>.csBody{max-height:4000px}.csKlsubToggle{cursor:pointer;user-select:none;display:flex;flex-direction:column;gap:4px;padding-right:16px;position:relative}.csKlsubToggle::after{content:'+';position:absolute;right:0;top:0;color:var(--acc);font-size:13px;font-weight:400;line-height:1;font-family:var(--font)}.csec.csOpen .csKlsubToggle::after{content:'−'}.csCollapseBtn{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:1px solid var(--line);padding:10px 14px;cursor:pointer;font-family:var(--font);text-align:left;margin-bottom:0;transition:border-color .15s,background .15s;box-sizing:border-box}.csCollapseBtn:hover{border-color:var(--acc);background:rgba(233,162,59,.04)}.csCBLabel{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}.csCBIcon{font-size:24px;color:var(--acc);line-height:1;flex-shrink:0;font-weight:300;order:-1;margin-right:10px}
+.wdOverviewBody>div:first-child{flex:1;min-width:0}
+.wdOverviewBody{display:flex;gap:20px;align-items:center}
+.heroGifDesktop{display:block}.heroGifMobile{display:none}@media(max-width:860px){.wdHeroWrap{display:none!important}.csMeta{padding-left:0!important;padding-right:0!important}.csHeaderEl{padding-left:0!important;padding-right:0!important;margin-left:0!important}
+/* Fix pipeline overflow */
+.pipeWrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.wdPipe{min-width:max-content}
+/* Fix evidence grid */
+.wdEvGrid{grid-template-columns:1fr!important}
+/* Fix text overflow in scope items */
+.wdEvItemL,.wdEvItemS{word-break:break-word}
+/* Fix video container blank space */
+.wdEvPh video{max-height:280px;object-fit:cover}
+@media(max-width:640px){.wdEvPh video{display:none!important}.wdEvPh{min-height:0!important;padding:0!important;border:none!important}}
+/* Fix csec padding on mobile */
+.csec{padding:20px 0!important;padding-left:0!important;padding-right:0!important}
+/* Fix collapsed section video overlap */
+.csec.csCollapse>.csBody{overflow:hidden!important}
+/* Reduce large padding gaps */
+.caseNav{padding-top:16px!important}
+}
+.mockupImg{width:75%;max-width:660px;height:auto;display:block;margin:0;padding-left:100px;box-sizing:border-box;opacity:.85}
+.wdPotionImg{width:96px;height:auto;flex-shrink:0;outline:2px solid var(--line)}
+@media(max-width:640px){.wdOverviewBody{flex-direction:column-reverse;align-items:flex-start}.wdPotionImg{width:100px!important;margin:0!important}.mockupImg{width:92%!important;padding-left:0!important;margin:0 auto!important}}
+@media(max-width:860px){.desktopOnly{display:none!important}.burger{display:flex}.procTlTrack{flex-direction:column;gap:0}.procTlTrack::before{display:none}.procTlItem{padding-right:0;padding-top:0;padding-left:20px;padding-bottom:20px;border-left:2px solid var(--line)}.procTlItem:last-child{padding-bottom:0}.procTlPip{left:-5px;top:4px;position:absolute}.procTl{margin-top:32px}}@media(min-width:861px){.burger{display:none}.csec>div:first-child{display:none}.csec{grid-template-columns:1fr!important;padding-left:100px;padding-right:80px}.csHead{padding-left:100px;padding-right:80px}.csBack{padding-left:100px}.csTitle{text-align:left}.csMeta{justify-content:flex-start;padding-left:10px}}@media(max-width:780px){.cardsGrid{grid-template-columns:1fr}.gMenu{padding:20px 24px 28px}.menuNavItem{font-size:clamp(26px,8vw,42px)}.csnav{top:57px}.footGrid{grid-template-columns:1fr;gap:24px}}
+</style>
+<script src="./image-slot.js"></script>
+</helmet><template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80"><rect width="120" height="80" fill="#0a0b0d"></rect><text x="14" y="46" font-family="sans-serif" font-size="28" font-weight="700" fill="var(--acc)">L</text><text x="34" y="46" font-family="sans-serif" font-size="14" font-weight="400" fill="#ffffff" opacity=".7">eon Maimon</text><text x="14" y="62" font-family="sans-serif" font-size="8" fill="#ffffff" opacity=".35" letter-spacing="1">PRODUCT DESIGNER</text></svg></template>
+<div class="site {{ themeClass }} {{ accentClass }} {{ tfClass }} {{ gridClass }} {{ a11yClass }} {{ rtlClass }}" dir="{{ siteDir }}">
+<div class="grain"><svg width="18" height="466" viewBox="0 0 18 466" preserveAspectRatio="none" style="position: absolute; left: 37px; top: 65px; width: 18px; height: 466px; overflow: visible; fill: none; stroke: #8a8378; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M0 466 L2 464 L2 462 L2 460 L4 457 L5 449 L5 447 L5 444 L5 440 L5 431 L5 423 L5 420 L5 416 L5 412 L5 408 L5 404 L5 400 L5 396 L5 392 L5 390 L5 388 L5 386 L5 384 L5 382 L5 380 L5 377 L5 373 L5 371 L5 368 L5 364 L5 360 L5 356 L5 353 L5 349 L5 341 L5 339 L5 335 L5 327 L5 320 L5 318 L5 312 L5 304 L5 297 L5 291 L5 285 L5 282 L5 277 L5 271 L5 268 L5 258 L5 252 L6 248 L6 239 L6 232 L6 227 L6 224 L7 218 L7 214 L7 210 L7 207 L8 204 L8 202 L8 199 L8 197 L8 195 L9 191 L9 185 L10 182 L10 176 L10 168 L10 163 L10 160 L10 156 L10 153 L10 149 L10 146 L10 144 L10 137 L10 132 L10 127 L10 123 L10 120 L10 118 L10 114 L10 112 L10 108 L10 104 L10 100 L10 95 L10 91 L10 88 L10 84 L10 81 L10 79 L10 76 L10 72 L11 68 L11 64 L12 61 L12 58 L12 56 L13 53 L14 50 L14 47 L14 45 L15 43 L15 40 L15 37 L16 35 L17 32 L17 29 L18 27 L18 25 L18 21 L18 18 L18 16 L18 14 L18 12 L18 10 L18 8 L18 6 L18 4 L18 2 L18 0"></path></svg></div>
+<nav class="sideNav desktopOnly"><span class="{{ clsWork }} sni" onClick="{{ goHome }}">{{ t.navWork }}</span><span class="{{ clsAbout }} sni" onClick="{{ goAbout }}">{{ t.navAbout }}</span><span class="{{ clsProcess }} sni" onClick="{{ goProcess }}">{{ t.navProcess }}</span><a class="sni" href="#contact">{{ t.navContact }}</a></nav><div class="csLeftNav desktopOnly {{ csChapNavCls }}"><sc-for list="{{ csChapItems }}" as="chap"><a class="{{ chap.cls }}" href="{{ chap.href }}" onClick="{{ chap.onClick }}"><span class="cdDot"></span><span class="cdLabel">{{ chap.label }}</span></a></sc-for></div><div class="hdr" dir="ltr">
+<div class="logo" onClick="{{ goHome }}">L<span class="logoFull">eon </span>M<span class="logoFull logoFull2">aimon</span>.</div>
+<div class="hdrR"><button class="themeToggleBtn" onClick="{{ toggleTheme }}" title="{{ themeLabel }}">{{ themeIcon }}</button><div class="{{ burgerCls }}" onClick="{{ toggleMob }}"><span></span><span></span></div></div>
+</div>
+<div class="{{ mobBackdropCls }}" onClick="{{ closeMob }}"></div><div class="{{ mobMenuCls }}" dir="ltr">
+<div class="gMenuTop"><div class="gMenuLogo">LM.</div><div class="gMenuClose" onClick="{{ closeMob }}">✕</div></div>
+<div><div class="menuCaseLbl" style="margin-bottom:10px">// PAGES</div><div class="{{ mobClsWork }}" onClick="{{ mobGoHome }}"><em>{{ t.navWork }}</em></div><div class="{{ mobClsAbout }}" onClick="{{ mobGoAbout }}">{{ t.navAbout }}</div><div class="{{ mobClsProcess }}" onClick="{{ mobGoProcess }}">{{ t.navProcess }}</div><a class="menuNavItem" href="#contact" onClick="{{ closeMob }}">{{ t.navContact }}</a></div>
+<div class="menuCaseDiv"><div class="menuCaseLbl">// CASE STUDIES</div><div class="menuCaseItem" onClick="{{ goCaseMob }}">Wildland Adventure</div><div class="menuCaseItem" onClick="{{ goCaseMagicMob }}">Magicaland Adventure</div><div class="menuCaseItem" onClick="{{ goCaseFishMob }}">Game Redesign</div></div>
+<div class="menuFoot"><div style="display:flex;align-items:center;gap:8px"><span class="blink"></span>Leon Maimon · 2026</div><div class="menuFootR"><button class="menuFootBtnPrimary" onClick="{{ toggleTheme }}">{{ themeIcon }} {{ themeLabel }}</button></div></div>
+</div>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div class="page">
+<div class="wrap hero">
+<div class="glow"></div>
+<div class="heroBootMob"></div>
+<div class="h1" style="margin-left:46px"><em>Game thinking.</em><br>Product depth.</div>
+<div class="heroBar"><div class="heroBarTrack"><div class="heroBarFill"></div></div><div class="heroBarMeta"><span class="heroMono" style="margin:0;letter-spacing:.04em;font-family:'Instrument Serif',serif;font-style:italic;font-size:15px"><b style="font-weight:400">Leon Maimon</b><span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400"> · Product</span></span><span class="heroBarYear" id="heroBarYear" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;color:var(--acc);font-weight:400;letter-spacing:-.01em"></span></div></div>
+<div class="heroSt"></div>
+</div>
+<div class="wrap">
+<div class="cardsGrid">
+<div class="card" onClick="{{ goCase }}"><div class="cardImg" style="display:flex;align-items:center;justify-content:center"><img class="caseLogo" src="uploads/Wildland_Icon.png" alt="Wildland Adventure" style="width:55%;height:auto;object-fit:contain;image-rendering:crisp-edges"><div class="cardImgGrad" style="background:linear-gradient(transparent 60%,var(--panel))"></div></div><div class="cardBody"><div><div class="cardTitle">Wildland Adventure</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div></div><div class="cardChips"><span class="gchip">progression</span><span class="gchip">economy</span><span class="gchip">live-ops</span></div></div>
+<div class="card" onClick="{{ goCaseMagic }}"><div class="cardImg" style="display:flex;align-items:center;justify-content:center"><img class="caseLogo" src="uploads/Magicaland_Icon.png" alt="Magicaland Adventure" style="width:55%;height:auto;object-fit:contain;image-rendering:crisp-edges"></div><div class="cardBody"><div><div class="cardTitle">Magicaland Adventure</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div></div><div class="cardChips"><span class="gchip">non-linear</span><span class="gchip">product</span><span class="gchip">economy</span><span class="gchip">mvp</span></div></div>
+<div class="card" onClick="{{ openGate }}" style="cursor:pointer"><div class="cardImg" style="position:relative"><img src="uploads/pasted-1782975439419-0.png" alt="Game Redesign" style="filter:grayscale(40%) brightness(.75)"><div class="cardImgGrad"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div></div><div class="cardBody"><div><div class="cardTitle">Game Redesign</div></div><div class="cardMeta">EFFECTIVATE</div></div></div><div class="cardChips"><span class="gchip">accessibility</span><span class="gchip">55+</span><span class="gchip">adaptive</span></div></div>
+</div>
+</div>
+<div class="wrap" style="padding-top:64px;display:none">
+<div class="chipsWrap"><div class="chips"><span class="chip">UX flows</span><span class="chip">Interaction design</span><span class="chip">Design systems</span><span class="chip">Game UX</span><span class="chip">Level design</span><span class="chip">Player-facing flows</span><span class="chip">Internal tools</span><span class="chip">PRDs</span><span class="chip">Stakeholder alignment</span><span class="chip">Figma</span><span class="chip">AI-assisted workflows</span><span class="chip">UX flows</span><span class="chip">Interaction design</span><span class="chip">Design systems</span><span class="chip">Game UX</span><span class="chip">Level design</span><span class="chip">Player-facing flows</span><span class="chip">Internal tools</span><span class="chip">PRDs</span><span class="chip">Stakeholder alignment</span><span class="chip">Figma</span><span class="chipsDup"><span class="chip">AI-assisted workflows</span></span></div></div>
+</div>
+<div class="wrap systemsWrap" style="padding-top:64px;padding-bottom:80px">
+<div class="secHd"><div class="secHdL">{{ t.secSystems }}</div></div>
+<div class="sysGrid">
+<div class="card sysCard"><div class="cardImg sysCardImg"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="cardBody"><div><div class="cardTitle">Social Expedition Builder Support</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div><div class="sysInfoWrap" style="color:var(--dim);flex-shrink:0;margin-left:12px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.2"></circle><circle cx="12" cy="8.5" r="1.4" fill="currentColor"></circle><line x1="12" y1="12" x2="12" y2="17.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></line></svg><div class="sysInfoBubble">Extending a single-player production tool to support social gameplay. Work included research, PRD, acceptance criteria, critical use cases, cross-functional coordination, and delivery acceptance across game systems, client, server, builder, Unity, and the production pipeline.</div></div></div><div class="cardChips"><span class="gchip">internal</span><span class="gchip">protected</span></div></div>
+<div class="card sysCard"><div class="cardImg sysCardImg"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="cardBody"><div><div class="cardTitle">Multi-select &amp; Internal Tooling</div><div class="cardMeta">COIN MASTER · MOON ACTIVE</div></div><div class="sysInfoWrap" style="color:var(--dim);flex-shrink:0;margin-left:12px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2.2"></circle><circle cx="12" cy="8.5" r="1.4" fill="currentColor"></circle><line x1="12" y1="12" x2="12" y2="17.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></line></svg><div class="sysInfoBubble">Defining a consistent multi-select interaction model across an internal level-building product. Audited where multi-select should exist, mapped supported actions (move, delete, duplicate, align, edit), and prioritized against Development capacity through a focused PRD review cycle.</div></div></div><div class="cardChips"><span class="gchip">internal</span><span class="gchip">protected</span></div></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<div class="page">
+<div class="wrap abNew">
+<div class="abIntroRow">
+<div class="abGreetPhoto"><img src="./assets/leon.png" alt="Leon Maimon"></div>
+<div class="abIntroText">
+<div class="abNewGreet">Hey, I'm <em>Leon.</em></div>
+<div class="abNewProse">
+
+<p>I'm curious about how people think, what makes products feel intuitive, and how <strong>good ideas become real experiences</strong>. I enjoy working with different teams, making sense of complexity, and turning it into solutions that are <strong>clear, useful, and practical</strong>.</p>
+
+
+
+</div>
+</div>
+</div>
+<a class="abNewCta" href="#contact" onClick="{{ closeMob }}">Get in touch</a>
+<div class="abTlWrap"><div class="abNewTl" id="abTl">
+<div class="abNewTlLine"></div>
+<div class="abNewTlItem cur" data-idx="0"><div class="abNewTlDot"></div><div class="abNewTlYr">2024–26</div><div class="abNewTlCo">Moon Active</div></div>
+<div class="abNewTlItem" data-idx="1"><div class="abNewTlDot"></div><div class="abNewTlYr">2023–24</div><div class="abNewTlCo">Effectivate</div></div>
+<div class="abNewTlItem" data-idx="2"><div class="abNewTlDot"></div><div class="abNewTlYr">2020–22</div><div class="abNewTlCo">Self-Employed</div></div>
+<div class="abNewTlItem" data-idx="3"><div class="abNewTlDot"></div><div class="abNewTlYr">2019–20</div><div class="abNewTlCo">Hillel Israel</div></div>
+<div class="abNewTlItem" data-idx="4"><div class="abNewTlDot"></div><div class="abNewTlYr">2014–15</div><div class="abNewTlCo">Seedr</div></div>
+</div>
+<div class="abTlCard show" id="abTlCard">
+<div class="abTlAccent" id="abTlAccent"></div>
+<div class="abTlCardLeft"><div class="abTlCardCo" id="abTlCo">Moon Active</div><div class="abTlCardYr" id="abTlYr">2024–26</div></div>
+<div class="abTlCardRight"><div class="abTlCardRole" id="abTlRole">Product Level Designer</div><div class="abTlCardDesc" id="abTlDesc"></div></div>
+</div></div>
+<div class="eduNew" style="margin-top:-34px">
+<div class="eduNewItem active"><div class="abNewTlDot" style="background:var(--acc);border-color:var(--acc)"></div><div class="eduNewYr">2021–Present</div><div class="eduNewTitle">M.A. Digital Game Design &amp; Development</div><div class="eduNewInst">Shenkar College</div></div>
+<div class="eduNewItem" style=""><div class="abNewTlDot" style="background:var(--acc);border-color:var(--acc)"></div><div class="eduNewYr">2015–2020</div><div class="eduNewTitle">B.Des Industrial Design</div><div class="eduNewInst">Jerusalem Multidisciplinary College</div></div>
+</div>
+<div class="abNewTl" style="margin-top:36px">
+<div class="abNewTlLine"></div>
+<div class="abNewTlItem" style="cursor:default"><div class="abNewTlDot" style="background:var(--acc);border-color:var(--acc)"></div><div class="abNewTlYr">Native</div><div class="abNewTlCo" style="color:var(--muted)">Hebrew</div></div>
+<div class="abNewTlItem" style="cursor:default"><div class="abNewTlDot" style="background:var(--acc);border-color:var(--acc)"></div><div class="abNewTlYr">Fluent</div><div class="abNewTlCo" style="color:var(--muted)">English</div></div>
+<div class="abNewTlItem" style="flex:3;cursor:default"></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isProcess }}" hint-placeholder-val="{{ false }}">
+<div class="page">
+<div class="wrap" style="padding:84px 40px 28px">
+<div class="pageTitle"><em>Build the system.</em><br>Play the game.</div>
+<div class="pageLede">I work across the product development cycle and stay close to the disciplines that shape the final experience — Product, Game Design, Economy, Art, and Engineering.</div>
+</div>
+<div class="wrap" style="padding:0 40px 80px">
+<div class="procTl">
+<div class="procTlTrack">
+<div class="procTlItem"><div class="procTlPip"></div><div class="procTlN">01</div><div class="procTlT">Frame the problem</div><div class="procTlD">Clarify what we're improving, why it matters, and how success should be measured. Player need, product intent, and constraints first.</div><div class="stepTags"><span class="tag">problem framing</span><span class="tag">goals</span><span class="tag">constraints</span></div></div>
+<div class="procTlItem"><div class="procTlPip"></div><div class="procTlN">02</div><div class="procTlT">Design the system</div><div class="procTlD">Map how mechanics, economy, progression, content, and player behavior interact as one connected system.</div><div class="stepTags"><span class="tag">systems</span><span class="tag">economy</span><span class="tag">progression</span></div></div>
+<div class="procTlItem"><div class="procTlPip"></div><div class="procTlN">03</div><div class="procTlT">Shape the experience</div><div class="procTlD">Translate the system into clear player-facing flows, layouts, interaction states, and edge cases.</div><div class="stepTags"><span class="tag">ux flows</span><span class="tag">layouts</span><span class="tag">interaction</span></div></div>
+<div class="procTlItem"><div class="procTlPip"></div><div class="procTlN">04</div><div class="procTlT">Define and deliver</div><div class="procTlD">Translate decisions into requirements, specs, use cases, and acceptance criteria.</div><div class="stepTags"><span class="tag">requirements</span><span class="tag">delivery</span><span class="tag">qa</span></div></div>
+<div class="procTlItem"><div class="procTlPip"></div><div class="procTlN">05</div><div class="procTlT">Learn and iterate</div><div class="procTlD">Review results, data, and player feedback. In live products, learning and delivery often happen in parallel.</div><div class="stepTags"><span class="tag">live ops</span><span class="tag">data</span><span class="tag">iteration</span></div></div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCase }}" hint-placeholder-val="{{ false }}">
+<div class="page">
+
+<div class="wrap wdHeroWrap"><div class="wdHeroBg"><img src="./uploads/05 - Yellow Arrow.gif" alt="" class="heroGifDesktop"><img src="./uploads/Wildland_Professional_Phone_Mockups_Transparent_v3.png" alt="" class="heroGifMobile"></div><div class="wdScrollHint"><span>Scroll</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--acc)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div></div>
+<div class="wrap" style="position:relative;z-index:1">
+<img src="./uploads/Wildland_Icon-6bc01df0.png" alt="Wildland Adventure" style="width:220px;height:auto;display:block;margin:0 auto 0">
+<div class="csHeaderEl" style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-top:14px;padding-left:100px">CASE STUDY · COIN MASTER · MOON ACTIVE</div>
+<div class="csHeaderEl csHeaderAccent" style="width:48px;height:2px;background:var(--acc);margin:10px 0 14px 100px"></div>
+<div class="csMeta" style="padding-left:100px;padding-right:80px"><span class="csMetaTag">Progression · Economy · Content · Tooling</span></div>
+</div>
+<div class="wrap">
+<div class="csec" id="cs-w-1"><div><div class="klabel">OVERVIEW</div></div><div class="csBody wdOverviewBody"><div><p>Wildland Adventure is an exploration and progression feature inside Coin Master. Players collect Potions, clear obstacles, earn Flags, fill the Stage progress bar, receive rewards, and advance through a structured path.</p><p>As the first Product Level Designer dedicated to the feature, I designed high-level Stage layouts and translated Economy and Product direction into executable progression experiences, while coordinating content production, implementation, testing, and iteration.</p></div><img src="./uploads/wildland_potion.png" alt="Wildland Potion" class="wdPotionImg"></div></div>
+<div style="margin:32px 0;position:relative;width:100%;overflow:hidden"><img src="./uploads/Wildland_Professional_Phone_Mockups_Transparent_v3.png" alt="Wildland mockups" class="mockupImg" style="height:auto;display:block;margin:0;padding-left:100px;box-sizing:border-box;opacity:.85">&gt;<div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 12%,transparent 88%,var(--bg) 100%)"></div></div>
+<div class="csec" id="cs-w-2"><div><div class="klabel">CHALLENGE</div></div><div class="csBody"><p>Wildland introduced a fundamentally different gameplay pattern into Coin Master - shifting players from the familiar spin-driven core loop into a spatial exploration experience based on resource spending, obstacle clearing, progression, and Stage completion.</p><p>The challenge was to make this new interaction model immediately understandable within a mature live game, while ensuring it complemented the wider product ecosystem rather than competing with it for player attention, time, or resources. At the same time, obstacle costs, resource distribution, rewards, player momentum, and a continuous LiveOps production schedule had to remain balanced - layout, Economy, pacing, and production constraints working together as one connected system.</p></div></div>
+<div class="csec" id="cs-w-3"><div><div class="klabel">APPROACH</div></div><div class="csBody"><p>I translated Product and Economy direction into playable Chapter layouts, progression configurations, content requirements, and production-ready solutions.</p><ul class="ulist"><li><span class="bul">·</span>High-level Chapter and Stage layouts, route structure, and area sequencing.</li><li><span class="bul">·</span>Obstacle, resource, and reward placement tuned for progression pacing.</li><li><span class="bul">·</span>When tests showed a mid-Stage bottleneck, I redistributed cost, obstacle density, and reward cadence with Economy - preserving the total cost envelope while improving momentum toward completion.</li><li><span class="bul">·</span>Chapter Dressing, art and asset requirements, and internal tooling needs.</li><li><span class="bul">·</span>Use cases and acceptance criteria, iteration, validation, and QA support.</li></ul></div></div>
+<div class="csec" id="cs-w-4"><div><div class="klabel">SYSTEM</div></div><div class="csBody"><div class="wdDiag">
+<div class="wdDiagHdr">
+<div class="wdDiagEye">SYSTEM STRUCTURE</div>
+<div class="wdDiagTitle">How Progression Scales</div>
+<div class="wdDiagIntro">Moment-to-moment actions accumulated into Stage progression, while completed Stages moved the player through the Chapter.</div>
+</div>
+<div class="wdDiagBody">
+<div class="wdPgStack">
+<div class="wdPgRow"><span class="wdPgSN">03</span><span class="wdPgSLabel">Chapter Progression</span><span class="wdPgSFlow">Complete Stages  ▶  Finish Chapter  ▶  Unlock Next Chapter</span><span class="wdPgSH">Long-term</span></div>
+<div class="wdPgRow"><span class="wdPgSN">02</span><span class="wdPgSLabel">Stage Progression</span><span class="wdPgSFlow">Collect Flags  ▶  Fill Stage Bar  ▶  Receive Reward  ▶  Advance</span><span class="wdPgSH">Mid-term</span></div>
+<div class="wdPgRow"><span class="wdPgSN">01</span><span class="wdPgSLabel">Player Actions</span><span class="wdPgSFlow">Spend Potions  ▶  Clear Obstacles  ▶  Earn Flags</span><span class="wdPgSH">Immediate</span></div>
+</div>
+</div>
+<div class="wdDiagFoot">The three layers connect immediate action, intermediate reward, and longer-term completion.</div>
+</div>
+<div class="wdDiag" style="margin-top:14px">
+<div class="wdDiagHdr">
+<div class="wdDiagEye">LEVEL STRUCTURE</div>
+<div class="wdDiagTitle">Linear Control, Exploratory Feel</div>
+<div class="wdDiagIntro">The route stayed structurally linear to preserve progression and Economy control, while spatial composition created anticipation and discovery.</div>
+</div>
+<div class="wdDiagBody" style="overflow-x:auto">
+<div class="wdFlow">
+<div class="wdNode wdNode--primary"><span class="wdNL">Linear Progression Control</span><span class="wdNS">One measurable route</span></div>
+<span class="wdArr">▶</span>
+<div class="wdNode"><span class="wdNL">Spatial Composition</span><span class="wdNS">Curvature · landmarks · occlusion</span></div>
+<span class="wdArr">▶</span>
+<div class="wdNode"><span class="wdNL">Exploratory Experience</span><span class="wdNS">Anticipation without true branching</span></div>
+</div>
+</div>
+</div></div></div>
+<div class="csec"><div><div class="klsub">INVESTMENT<br>DECISION</div></div><div class="csBody"><svg viewBox="0 0 660 168" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin-bottom:4px"><defs><marker id="w04a" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--dim)"></polygon></marker></defs><path d="M578,72 Q610,72 610,140 Q610,154 330,154 Q50,154 50,140 Q50,72 46,72" style="stroke:var(--dim)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#w04a)" fill="none"></path><line x1="118" y1="72" x2="158" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="238" y1="72" x2="278" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="358" y1="72" x2="398" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><line x1="478" y1="72" x2="518" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w04a)"></line><circle cx="80" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(68,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></g><text x="80" y="120" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">SEE TARGET</text><circle cx="200" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(188,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 14v2"></path><path d="M14 20v2"></path><path d="M14 2v2"></path><path d="M14 8v2"></path><path d="M2 15h8"></path><path d="M2 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2"></path><path d="M2 9h8"></path><path d="M22 15h-4"></path><path d="M22 3h-2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2"></path><path d="M22 9h-4"></path><path d="M5 3v18"></path></g><text x="200" y="120" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">COMPARE VALUE</text><circle cx="320" cy="72" r="34" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(308,60)" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></g><text x="320" y="120" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:9px;letter-spacing:.06em">INVEST POTIONS</text><circle cx="440" cy="72" r="34" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(428,60)" style="stroke:var(--dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></g><text x="440" y="120" text-anchor="middle" style="fill:var(--fg);fill-opacity:.65;font-family:var(--font);font-size:9px;letter-spacing:.06em">UNLOCK PROGRESS</text><circle cx="560" cy="72" r="34" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(548,60)" stroke="var(--acc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"></path><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"></path><path d="M18 9h1.5a1 1 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6 9H4.5a1 1 0 0 1 0-5H6"></path></g><text x="560" y="120" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:9px;letter-spacing:.06em">REASSESS</text><text x="330" y="163" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">W-04 · INVESTMENT DECISION MODEL</text></svg></div></div>
+<div class="csec"><div><div class="klsub">GAMEPLAY<br>LOOPS</div></div><div class="csBody"><svg viewBox="0 0 560 168" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin-bottom:20px"><defs><marker id="w01a" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0 0, 7 3, 0 6" style="fill:var(--dim)"></polygon></marker></defs><path d="M480,72 Q512,72 512,140 Q512,154 260,154 Q8,154 8,140 Q8,72 40,72" style="stroke:var(--dim)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#w01a)" fill="none"></path><line x1="120" y1="72" x2="160" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w01a)"></line><line x1="240" y1="72" x2="280" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w01a)"></line><line x1="360" y1="72" x2="400" y2="72" style="stroke:var(--dim)" stroke-width="1.5" marker-end="url(#w01a)"></line><circle cx="80" cy="72" r="36" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(62,54) scale(1.5)" style="stroke:var(--dim)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></g><text x="80" y="121" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:10px;letter-spacing:.07em">EXPLORE</text><circle cx="200" cy="72" r="36" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(182,54) scale(1.5)" stroke="var(--acc)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"></path><path d="M6.453 15h11.094"></path><path d="M8.5 2h7"></path></g><text x="200" y="121" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:10px;letter-spacing:.07em">SPEND POTIONS</text><circle cx="320" cy="72" r="36" style="stroke:var(--dim)" stroke-width="1.5" fill="none"></circle><g transform="translate(302,54) scale(1.5)" style="stroke:var(--dim)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="m14 12-8.381 8.38a1 1 0 0 1-3.001-3L11 9"></path><path d="M15 15.5a.5.5 0 0 0 .5.5A6.5 6.5 0 0 0 22 9.5a.5.5 0 0 0-.5-.5h-1.672a2 2 0 0 1-1.414-.586l-5.062-5.062a1.205 1.205 0 0 0-1.704 0L9.352 5.648a1.205 1.205 0 0 0 0 1.704l5.062 5.062A2 2 0 0 1 15 13.828z"></path></g><text x="320" y="121" text-anchor="middle" style="fill:var(--fg);fill-opacity:.65;font-family:var(--font);font-size:10px;letter-spacing:.07em">CLEAR OBSTACLES</text><circle cx="440" cy="72" r="36" stroke="var(--acc)" stroke-width="1.5" fill="rgba(233,162,59,.07)"></circle><g transform="translate(422,54) scale(1.5)" stroke="var(--acc)" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"></path></g><text x="440" y="121" text-anchor="middle" fill="var(--acc)" style="font-family:var(--font);font-size:10px;letter-spacing:.07em">ADVANCE</text><text x="280" y="163" text-anchor="middle" style="fill:var(--dim);font-family:var(--font);font-size:9px;letter-spacing:.06em">W-01 · THE WILDLAND PROGRESSION LOOP</text></svg><p>The feature connects three nested loops - each building on the previous to create meaning across different timescales.</p><div class="diagram" style="margin-top:18px"><div class="loopCard"><div class="loopLabel">ACTION LOOP</div><div class="loopNodes"><div class="dnode"><div class="dnum">01</div><div class="dnt">Spend Potions</div><div class="dns">Entry currency spent on obstacles.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">02</div><div class="dnt">Clear Obstacles</div><div class="dns">Each cleared obstacle drops a Flag.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">03</div><div class="dnt">Earn Flags</div><div class="dns">Flags are the currency of Stage progression.</div></div></div><div class="dcap" style="margin-top:10px">Moment-to-moment action - every spend has a visible result.</div></div><div class="loopCard"><div class="loopLabel">STAGE LOOP</div><div class="loopNodes"><div class="dnode"><div class="dnum">01</div><div class="dnt">Earn Flags</div><div class="dns">Flags fill the progress bar.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">02</div><div class="dnt">Fill Stage Bar</div><div class="dns">Progress is visible and measurable.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">03</div><div class="dnt">Receive Rewards</div><div class="dns">Spins, gems, and event currency.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">04</div><div class="dnt">Advance</div><div class="dns">Unlock the next Stage on the map.</div></div></div><div class="dcap" style="margin-top:10px">Stage progression - gives meaning to each individual action.</div></div><div class="loopCard"><div class="loopLabel">CHAPTER LOOP</div><div class="loopNodes"><div class="dnode"><div class="dnum">01</div><div class="dnt">Complete Stages</div><div class="dns">Several Stages fill the Chapter.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">02</div><div class="dnt">Finish Chapter</div><div class="dns">Chapter completion - rewards and recognition.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">03</div><div class="dnt">Unlock Next Chapter</div><div class="dns">New environment, obstacles, reward cadence.</div></div></div><div class="dcap" style="margin-top:10px">Long-term arc - creates a sense of journey beyond individual sessions.</div></div><div class="dsub"><span class="chip">Tree of Life · water</span><span class="chip">Wildland Temple · bombs</span><span class="chip">Race · points ▶ levels</span></div></div></div></div>
+<div class="csec"><div><div class="klsub">PROGRESSION &amp;<br>ECONOMY<br>ITERATION</div></div><div class="csBody"><div class="wdDiag">
+<div class="wdDiagHdr">
+<div class="wdDiagEye">HANDS-ON ITERATION</div>
+<div class="wdDiagTitle">Progression &amp; Economy Before / After</div>
+<div class="wdDiagIntro">The Stage needed a more intentional pacing curve without reducing the overall challenge envelope.</div>
+</div>
+<div class="wdDiagBody">
+<div class="wdIterRow">
+<span class="wdDiagSec">Before</span>
+<div class="wdChips">
+<span class="wdChip">Stable start</span><span class="wdArr">▶</span>
+<span class="wdChip">Mid-stage bottleneck</span><span class="wdArr">▶</span>
+<span class="wdChip">Sustained friction</span><span class="wdArr">▶</span>
+<span class="wdChip">Exhausted finish</span>
+</div>
+</div>
+<div class="wdIterRow">
+<span class="wdDiagSec">After</span>
+<div class="wdChips">
+<span class="wdChip wdChip--acc">Stable start</span><span class="wdArr">▶</span>
+<span class="wdChip wdChip--acc">Build-up</span><span class="wdArr">▶</span>
+<span class="wdChip wdChip--acc">Relief</span><span class="wdArr">▶</span>
+<span class="wdChip wdChip--acc">Challenge</span><span class="wdArr">▶</span>
+<span class="wdChip wdChip--acc">Recovery</span><span class="wdArr">▶</span>
+<span class="wdChip wdChip--acc">Controlled finish</span>
+</div>
+</div>
+<div class="wdIterTags">
+<span class="wdIterTag">Obstacle cost</span>
+<span class="wdIterTag">Density</span>
+<span class="wdIterTag">Reward cadence</span>
+<span class="wdIterTag">Resource distribution</span>
+</div>
+</div>
+<div class="wdDiagFoot">Costs, obstacle density, and reward cadence were redistributed to reduce a mid-Stage bottleneck and preserve momentum.</div>
+</div><p>The goal was not to remove complexity, but to distribute it more intentionally across the Stage. An uneven progression curve created a mid-Stage bottleneck that carried into end-Stage exhaustion.</p><div class="cmp" style="margin-top:14px"><div class="cmpCol"><div class="cmpH">BEFORE</div><div class="baChain"><div class="dnode" style="font-size:13px;padding:8px 12px">Stable start</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(255,80,80,.3);background:rgba(255,80,80,.06)">Dense mid-Stage</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(255,80,80,.3);background:rgba(255,80,80,.06)">Sustained friction</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(255,80,80,.3);background:rgba(255,80,80,.06)">Exhausted finish</div></div><div style="font-family:var(--font);font-size:12px;color:var(--dim);margin-top:12px">2S / 6M / 8L / 4 Rewards - high cost density, long uninterrupted segments.</div></div><div class="cmpCol"><div class="cmpH">AFTER</div><div class="baChain"><div class="dnode" style="font-size:13px;padding:8px 12px">Stable start</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(143,224,74,.3);background:rgba(143,224,74,.06)">Gradual complexity</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:var(--acc);background:rgba(233,162,59,.08)">Pacing break</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px;border-color:rgba(143,224,74,.3);background:rgba(143,224,74,.06)">Denser challenge</div><div class="darrow">▶</div><div class="dnode" style="font-size:13px;padding:8px 12px">Controlled finish</div></div><div style="font-family:var(--font);font-size:12px;color:var(--dim);margin-top:12px">2S / 7M / 7L / 5 Rewards - redistributed cost, clearer beats, added relief point.</div></div></div><div style="margin-top:24px"><div class="cmpH" style="margin-bottom:8px">GAMEPLAY BEATS - AFTER</div><table class="beatTbl"><tr><td>Opening Beat</td><td>S · S · M</td><td>Reward ▶ low friction entry</td></tr><tr><td>Rising Action</td><td>M · M · L</td><td>Reward ▶ gradual escalation</td></tr><tr><td>Relief Beat</td><td>M · L</td><td>Reward ▶ deliberate pacing break before peak</td></tr><tr><td>Escalation</td><td>M · L · M · L · L</td><td>Reward ▶ highest density</td></tr><tr><td>Climactic Finish</td><td>M · L · L</td><td>Reward ▶ Stage Complete</td></tr></table></div></div></div>
+<div class="csec" id="cs-w-5"><div><div class="klabel">EXPERIENCE</div></div><div class="csBody"><div class="shots" style="grid-template-columns:1fr 1fr 1fr"><div class="shot" style="overflow:hidden;border-radius:0"><img src="./uploads/images.jpg" alt="Wildland stage - green biome" style="width:100%;height:auto;display:block"></div><div class="shot" style="overflow:hidden;border-radius:0"><img src="./uploads/images (5).jpg" alt="Wildland stage - canyon biome" style="width:100%;height:auto;display:block"></div><div class="shot" style="overflow:hidden;border-radius:0"><img src="./uploads/images (6).jpg" alt="Wildland stage - desert biome" style="width:100%;height:auto;display:block"></div></div></div></div>
+<div class="csec"><div><div class="klsub">WALKTHROUGH</div></div><div class="csBody"><div class="video"><iframe src="https://www.youtube.com/embed/zz3zQinhZ3E?playsinline=1&amp;rel=0" title="Wildland Adventure walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" allowfullscreen></iframe></div><a href="https://www.youtube.com/watch?v=zz3zQinhZ3E" target="_blank" rel="noopener noreferrer" style="display:inline-flex;margin-top:12px;color:var(--acc);font-family:var(--font);font-size:14px;text-decoration:underline;text-underline-offset:4px">Watch on YouTube</a></div></div>
+<div class="csec" id="cs-w-6"><div><div class="klabel">EXECUTION &amp;<br>COLLABORATION</div></div><div class="csBody"><div class="wdDiag">
+<div class="wdDiagHdr">
+<div class="wdDiagEye">ROLE AND PRODUCTION FLOW</div>
+<div class="wdDiagTitle">From Direction to Playable Chapter</div>
+<div class="wdDiagIntro">How product direction became executable stage content across cross-functional boundaries.</div>
+</div>
+<div class="wdDiagBody">
+<div class="wdPipeWrap">
+<div class="wdPipe">
+<div class="wdPipeCell"><span class="wdPCL">Product Direction</span></div>
+<div class="wdPipeCell"><span class="wdPCL">High-level Layout</span></div>
+<div class="wdPipeCell wdPipeCell--primary"><span class="wdPCL">Content Production</span></div>
+<div class="wdPipeCell"><span class="wdPCL">Implementation</span></div>
+<div class="wdPipeCell"><span class="wdPCL">QA</span></div>
+<div class="wdPipeCell"><span class="wdPCL">Iteration</span></div>
+</div>
+</div>
+<div class="wdStreams">
+<span class="wdStreamsEye">Workstreams</span>
+<div class="wdStreamChips">
+<span class="wdStreamChip">Level Design</span>
+<span class="wdStreamChip">Economy</span>
+<span class="wdStreamChip">Art</span>
+<span class="wdStreamChip">Tech Art</span>
+<span class="wdStreamChip">Development</span>
+<span class="wdStreamChip">QA</span>
+</div>
+</div>
+</div>
+</div>
+<div class="wdDiag" style="margin-top:14px">
+<div class="wdDiagHdr">
+
+<div class="wdDiagTitle">Chapter Scope</div>
+
+</div>
+<div class="wdDiagBody">
+<div class="wdEvGrid">
+<div>
+<div class="wdEvPh" style="padding:0;overflow:hidden;min-height:auto;background:transparent;border:none"><div style="max-width:480px;margin:0 auto;position:relative"><video playsinline src="./uploads/AQPVptJzgoktuVfEWZftB-N-W0QV6OgfQk0cqL98YI58LxUhBPGIHonMR0j8YkCvJcapOfdEZpCxSpxfidTg8095V7mNsHQXKdBAVYtRDg.mp4" controls="" style="width:100%;height:auto;display:block" preload="metadata"></video></div></div>
+
+</div>
+<div>
+<div class="wdEvScopeHdr">My Scope</div>
+<div class="wdEvItem"><span class="wdEvDot"></span><div><div class="wdEvItemL">Layout</div><div class="wdEvItemS">Route structure and spatial composition</div></div></div>
+<div class="wdEvItem"><span class="wdEvDot"></span><div><div class="wdEvItemL">Chapter Dressing</div><div class="wdEvItemS">Landmarks and environmental pacing</div></div></div>
+<div class="wdEvItem"><span class="wdEvDot"></span><div><div class="wdEvItemL">Obstacle Placement</div><div class="wdEvItemS">Sequence, density, and progression clarity</div></div></div>
+<div class="wdEvItem"><span class="wdEvDot"></span><div><div class="wdEvItemL">Economy Configuration</div><div class="wdEvItemS">Relative costs, rewards, and pacing</div></div></div>
+<div class="wdEvItem"><span class="wdEvDot"></span><div><div class="wdEvItemL">Asset Coordination</div><div class="wdEvItemS">Art, Tech Art, and Development</div></div></div>
+</div>
+</div>
+</div>
+<div class="wdDiagFoot">Connects route structure, obstacle sequencing, Economy-informed configuration, and asset coordination in one evidence board.</div>
+</div></div></div>
+<div class="csec" id="cs-w-7"><div><div class="klabel">OUTCOME</div></div><div class="csBody"><ul class="ulist"><li><span class="bul">·</span>Contributed to a repeatable production process for live Stage and Chapter creation.</li><li><span class="bul">·</span>Clearer balancing logic and a more structured relationship between layout, Economy, pacing, and implementation.</li><li><span class="bul">·</span>Subsequent tests showed improved progression pacing and Stage completion, though the effect could not be attributed to layout changes alone.</li></ul><div class="note"><br></div></div></div>
+<div class="csec" id="cs-w-8"><div><div class="klabel">REFLECTION</div></div><div class="csBody"><div class="csH">What Wildland Taught Me About Systems</div><p>Wildland strengthened my understanding that progression design is not a sequence of isolated stages, but a connected product system.</p><p>Each layout decision could affect several dimensions at once: resource consumption, reward timing, perceived progress, pacing, and the player's understanding of what to pursue next. A stage could work locally while still creating problems across the wider journey.</p><p>This pushed me to evaluate content at multiple levels: the immediate player experience, the chapter and stage structure, the economy requirements, and the production system needed to support ongoing delivery.</p><p>It also changed how I approach product work more broadly. I became more deliberate about identifying dependencies early, separating local optimization from system-level impact, and designing solutions that remain understandable, scalable, and executable across teams.</p></div></div>
+</div>
+<div class="wrap"><div class="caseNav"><span class="caseNavBtn disabled"></span><span class="back" onClick="{{ goHome }}">{{ t.back }}</span><span class="caseNavBtn" onClick="{{ goCaseMagic }}">Magicaland Adventure ▶</span></div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCaseMagic }}" hint-placeholder-val="{{ false }}">
+<div class="page">
+
+<div class="wrap wdHeroWrap" style="margin:0 140px -160px 160px;min-height:480px"><div class="wdHeroBg" style="position:absolute;inset:0"><img src="./uploads/wildland_tutorial_854322-ezgif.com-video-to-gif-converter.gif" alt="Magicaland Adventure" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.38;display:block"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 20%,transparent 75%,var(--bg) 100%)"></div></div><div class="wdScrollHint"><span>Scroll</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--acc)"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div></div>
+<div class="wrap" style="position:relative;z-index:1">
+<img src="./uploads/Magicaland_Icon-cfa53655.png" alt="Magicaland Adventure" style="width:220px;height:auto;display:block;margin:0 auto 0">
+<div class="csHeaderEl" style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-top:14px;padding-left:100px">CASE STUDY · COIN MASTER · MOON ACTIVE</div>
+<div class="csHeaderEl csHeaderAccent" style="width:48px;height:2px;background:var(--acc);margin:10px 0 14px 100px"></div>
+<div class="csMeta" style="padding-left:100px;padding-right:80px"><span class="csMetaTag">Coin Master · Moon Active</span><span class="csMetaTag">Product Level Designer</span><span class="csMetaTag">Non-Linear MVP · Economy · Level Editor · Production</span></div>
+</div>
+<div class="wrap">
+<div class="csec" id="cs-m-1"><div><div class="klabel">OVERVIEW</div></div><div class="csBody"><p>Magicaland Adventure evolved from a production-tested MVP that explored how Coin Master's Expedition model could move beyond a primarily linear progression structure. Based on Product, Business, and Economy requirements, the MVP introduced a controlled Main Road with optional Side Roads - creating space for bonus progression, risk–reward decisions, and deeper future product capabilities.</p><p>As a Product Level Designer, I translated this direction into playable layouts, Economy-informed configurations, content and asset requirements, level-building tool requirements, and a production-testable experience. The MVP became a direct foundation for Magicaland Adventure, which continued to evolve through multiple versions and supporting systems.</p></div></div>
+<div style="margin:32px 0;position:relative;width:100%;overflow:hidden"><img src="./uploads/MagicalLand_Phone_Mockups_Transparent_v2.png" alt="Magicaland mockups" class="mockupImg" style="height:auto;display:block;margin:0;padding-left:100px;box-sizing:border-box;opacity:.85"><div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 12%,transparent 88%,var(--bg) 100%)"></div></div>
+<div class="csec" id="cs-m-2"><div><div class="klabel">CHALLENGE</div></div><div class="csBody"><p>The existing Expedition model relied on a primarily linear progression structure. This made progression easy to understand and control, but limited optional depth, player agency, and the number of product levers available within the experience.</p><p>The opportunity was to explore whether a controlled non-linear structure could introduce meaningful Side Roads, bonus progression, and risk–reward decisions while preserving a clear Main Road - without investing prematurely in a dedicated Economy, Monetization layer, and new Chapter structures before the direction had been validated with real players. The challenge: build enough of the future experience to test it credibly in production, while keeping the MVP constrained, feasible, and compatible with existing systems.</p></div></div>
+<div class="csec" id="cs-m-3"><div><div class="klabel">ROLE &amp; SCOPE</div></div><div class="csBody"><p>I translated Product, Business, and Economy direction into a production-testable gameplay experience.</p><ul class="ulist"><li><span class="bul">·</span>Contributed to concept development, gameplay alternatives, and strategic direction.</li><li><span class="bul">·</span>Designed Main Road and optional Side Road layouts.</li><li><span class="bul">·</span>Translated Economy requirements, models, and simulation outputs into playable configurations, iterating on resource distribution, progression parameters, and route structure.</li><li><span class="bul">·</span>Created mockups, Chapter Dressing, and visual alternatives; planned existing, new, unique, and temporary MVP assets.</li><li><span class="bul">·</span>Coordinated content needs across Art, Animation, Tech Art, and Development.</li><li><span class="bul">·</span>Defined Level Builder requirements for the non-linear structure and supported configuration export &amp; integration.</li><li><span class="bul">·</span>Clarified critical gameplay and configuration scenarios for QA and Operations, and participated in shared triage.</li></ul></div></div>
+<div class="csec" id="cs-m-4"><div><div class="klabel">SYSTEM</div></div><div class="csBody"><div class="wdDiag">
+<div class="wdDiagHdr">
+<div class="wdDiagEye">PRODUCT EVOLUTION</div>
+<div class="wdDiagTitle">From Linear Progression to Controlled Non-Linearity</div>
+
+</div>
+<div class="wdDiagBody" style="overflow-x:auto">
+<div class="wdFlow">
+<div class="wdNode wdNode--primary"><span class="wdNL">Linear Model</span><span class="wdNS">One route · One dominant progression layer</span></div>
+<span class="wdArr">▶</span>
+<div class="wdNode"><span class="wdNL">Controlled Non-Linear MVP</span><span class="wdNS">Main Road · optional routes · parallel goals</span></div>
+</div>
+</div>
+
+</div>
+<div class="wdDiag" style="margin-top:14px">
+<div class="wdDiagHdr">
+<div class="wdDiagEye">PROGRESSION ARCHITECTURE</div>
+<div class="wdDiagTitle">Main Road and Optional Progression</div>
+<div class="wdDiagIntro">The primary journey remained visible while optional routes and activities created different costs, rewards, dependencies, and progression effects.</div>
+</div>
+<div class="wdDiagBody">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="background:var(--acc);border:1px solid var(--acc);padding:16px"><div class="wdDiagSec" style="color:rgba(0,0,0,.5)">Primary Journey</div><div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;color:#0a0b0d">Main Road ▶ Main Milestone</div></div>
+<div style="background:var(--panel2);border:1px solid var(--line);padding:16px"><div class="wdDiagSec">Optional Goals</div><div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;color:var(--fg)">Bonus Route · Activity · Achievement · Bar</div></div>
+</div>
+<p style="font-size:10px;color:var(--dim);text-align:center;margin-top:10px">Player allocates Potion investment across visible goals.</p>
+</div>
+
+</div></div></div>
+<div class="csec"><div><div class="klsub">FROM LINEAR<br>TO NON-LINEAR</div></div><div class="csBody"><p>The MVP shifted the experience from a single progression bar to a map-based system of parallel progression layers - each with its own player value, cost, and milestone logic.</p><div class="cmp"><div class="cmpCol"><div class="cmpH">EXISTING MODEL</div><ul class="cmpL"><li><span class="bul">·</span>Clearing obstacles directly granted Flags.</li><li><span class="bul">·</span>Flags filled one Stage Bar.</li><li><span class="bul">·</span>Movement and progression were mostly the same flow.</li><li><span class="bul">·</span>One dominant progression decision.</li></ul></div><div class="cmpCol"><div class="cmpH">MVP / EVOLVING MODEL</div><ul class="cmpL"><li><span class="bul">·</span>Flags exist at specific locations, no longer tied to every cleared interaction.</li><li><span class="bul">·</span>Multiple progression systems operate in parallel.</li><li><span class="bul">·</span>Movement, destinations, milestones, bars, and route unlocks represent distinct progress.</li><li><span class="bul">·</span>Players evaluate multiple goals with different costs and rewards.</li></ul></div></div><div class="dcap"><span class="acc"><span style="color: rgb(120, 123, 130);">Core player question: which goal should I invest in now, and what does that investment unlock?</span></span></div></div></div>
+<div class="csec"><div><div class="klsub">MAIN ROAD &amp;<br>BONUS ROUTES</div></div><div class="csBody"><p>The MVP introduced a clear Main Road alongside optional Bonus Routes. The Main Road preserved the primary journey and Stage completion path, while Bonus Routes created additional decisions around cost, reward, timing, and opportunity cost.</p><ul class="ulist"><li><span class="bul">·</span><b style="color:var(--fg);font-weight:500">Partial information</b> - the route and reward destination were visible, but exact cost and full reward value were not always exposed in advance, preserving curiosity and discovery.</li><li><span class="bul">·</span><b style="color:var(--fg);font-weight:500">Backtracking</b> - players could return along a cleared path; previously cleared obstacles stayed open, with no repeated Potion cost.</li><li><span class="bul">·</span><b style="color:var(--fg);font-weight:500">Optional by design</b> - Bonus Routes were not required to complete the Stage, but could offer meaningful value inside the event and across the wider product.</li></ul></div></div>
+<div class="csec"><div><div class="klsub">PARALLEL<br>PROGRESSION</div></div><div class="csBody"><p>The MVP introduced multiple progression layers that could advance in parallel rather than through a single bar. Each layer represented a different player goal, cost, dependency, or reward - the challenge was creating meaningful choice without losing clarity about the primary journey.</p><div class="dsub"><span class="chip">Main Road</span><span class="chip">Side Road</span><span class="chip">Flags</span><span class="chip">Activities</span><span class="chip">Milestones</span><span class="chip">Route unlocks</span><span class="chip">Achievements</span><span class="chip">Golden Journey</span><span class="chip">Parallel bars</span></div></div></div>
+<div class="csec"><div><div class="klsub">CORE–EVENT<br>ECONOMY</div></div><div class="csBody"><p>These decisions operated within a broader core–event Economy loop. Players evaluated not only what an action unlocked inside the Expedition, but also what value the event returned to the core game - and which core resources were worth investing back into the event.</p><div style="margin-top:20px;display:flex;align-items:stretch;gap:0"><div style="flex:1;border:1px solid var(--chipborder);background:var(--panel);border-radius:0;padding:20px 22px"><div class="cmpH" style="margin-bottom:10px">COIN MASTER CORE</div><div style="font-size:14px;line-height:1.55;color:var(--muted)">Spins, coins, and other core resources feed into event participation. Each session is an opportunity cost decision.</div></div><div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 18px;background:var(--panel2);border-top:1px solid var(--chipborder);border-bottom:1px solid var(--chipborder)"><div style="display:flex;align-items:center;gap:8px;font-family:var(--font);font-size:12px;color:var(--acc)"><div style="background:var(--acc);color:var(--accfg);border-radius:0;padding:3px 8px;font-weight:600;white-space:nowrap">▶ invest</div><div style="color:var(--dim);font-size:11px;max-width:100px;text-align:center">resources &amp; opportunity cost</div></div><div style="width:1px;height:20px;background:var(--line2)"></div><div style="display:flex;align-items:center;gap:8px;font-family:var(--font);font-size:12px;color:var(--acc)"><div style="color:var(--dim);font-size:11px;max-width:100px;text-align:center">rewards &amp; progression value</div><div style="background:var(--acc);color:var(--accfg);border-radius:0;padding:3px 8px;font-weight:600;white-space:nowrap">◀ return</div></div></div><div style="flex:1;border:1px solid var(--chipborder);background:var(--panel);border-radius:0;padding:20px 22px"><div class="cmpH" style="margin-bottom:10px">MAGICALAND EVENT</div><div style="font-size:14px;line-height:1.55;color:var(--muted)">Route and activity choices inside the event determine what rewards flow back - spins, gems, and wider product utility.</div></div></div></div></div>
+<div class="csec" id="cs-m-5"><div><div class="klabel">MVP<br>DESIGN</div></div><div class="csBody"><p>The MVP was the smallest credible version that could produce meaningful player behavior in production - enough depth to test real behavior, but not so much that the team became locked into an unvalidated Economy or content model.</p><div class="cmp"><div class="cmpCol"><div class="cmpH">BUILT FOR VALIDATION</div><ul class="cmpL"><li><span class="bul">·</span>Playable non-linear route structure</li><li><span class="bul">·</span>Minimum viable Economy adaptation</li><li><span class="bul">·</span>Progression and activity logic</li><li><span class="bul">·</span>Visual clarity and sufficient content</li><li><span class="bul">·</span>Minimum builder + export support</li></ul></div><div class="cmpCol"><div class="cmpH">DEFERRED UNTIL VALIDATED</div><ul class="cmpL"><li><span class="bul">·</span>Full future Economy system</li><li><span class="bul">·</span>Dedicated Monetization layers</li><li><span class="bul">·</span>New full Chapter structures</li><li><span class="bul">·</span>A broader tooling platform</li><li><span class="bul">·</span>Deeper product expansion</li></ul></div></div></div></div>
+<div class="csec"><div><div class="klsub">MVP SCOPE &amp;<br>FRICTION<br>REDUCTION</div></div><div class="csBody"><div class="wdDiag">
+<div class="wdDiagHdr">
+<div class="wdDiagEye">MVP STRATEGY</div>
+<div class="wdDiagTitle">Credibility vs Commitment</div>
+
+</div>
+<div class="wdDiagBody">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="border:1px solid var(--line);background:var(--panel2);padding:14px">
+<div class="wdDiagSec">Built for validation</div>
+<div class="wdEvItem"><span class="wdEvDot"></span><div><div class="wdEvItemL">Non-linear gameplay</div></div></div>
+<div class="wdEvItem"><span class="wdEvDot"></span><div><div class="wdEvItemL">Minimum viable Economy</div></div></div>
+<div class="wdEvItem" style="border-bottom:none"><span class="wdEvDot"></span><div><div class="wdEvItemL">Production capability</div></div></div>
+</div>
+<div style="border:1px dashed var(--line);background:var(--panel);padding:14px;opacity:.7">
+<div class="wdDiagSec">Deferred until validated</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="width:5px;height:5px;border:1px solid var(--dim);flex-shrink:0;display:inline-block"></span>Full future Economy system</div>
+<div style="font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="width:5px;height:5px;border:1px solid var(--dim);flex-shrink:0;display:inline-block"></span>Broader monetization</div>
+<div style="font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px"><span style="width:5px;height:5px;border:1px solid var(--dim);flex-shrink:0;display:inline-block"></span>Scaled tooling &amp; content</div>
+</div>
+</div>
+</div>
+</div>
+
+</div></div></div>
+<div class="csec"><div><div class="klabel">DECISIONS &amp;<br>EVOLUTION</div></div><div class="csBody"><div class="trade"><div class="tradeRow"><div class="tradeD">Parallel progression</div><div class="tradeT">More player agency and product levers <b>vs</b> higher cognitive, Economy, balancing, and production complexity.</div></div><div class="tradeRow"><div class="tradeD">Main Road with optional Side Roads</div><div class="tradeT">Meaningful route choice <b>vs</b> preserving a clear primary journey and measurable progression.</div></div><div class="tradeRow"><div class="tradeD">Minimum viable Economy</div><div class="tradeT">Credible player decisions <b>vs</b> avoiding premature commitment to the final Economy.</div></div><div class="tradeRow"><div class="tradeD">Reuse before expansion</div><div class="tradeT">Speed and technical feasibility <b>vs</b> bespoke content and future flexibility.</div></div><div class="tradeRow"><div class="tradeD">Minimum required tooling</div><div class="tradeT">Production readiness <b>vs</b> premature investment in a full tooling platform.</div></div></div></div></div>
+<div class="csec"><div><div class="klsub">PRODUCT<br>EVOLUTION</div></div><div class="csBody"><p>The MVP did not remain an isolated experiment. It became a direct product foundation, expanded across later versions with additional systems, features, and content.</p><div class="diagram"><div class="dloop"><div class="dnode"><div class="dnum">01</div><div class="dnt">Linear Expedition</div><div class="dns">The original primarily-linear progression model.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">02</div><div class="dnt">Production-tested MVP</div><div class="dns">Validated controlled non-linear progression.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">03</div><div class="dnt">Magicaland V1</div><div class="dns">Main Road, Side Road &amp; parallel progression logic.</div></div><div class="darrow">▶</div><div class="dnode"><div class="dnum">04</div><div class="dnt">Later versions</div><div class="dns">Added systems, capabilities &amp; operational expansion.</div></div></div></div></div></div>
+<div class="csec" id="cs-m-6"><div><div class="klabel">EXECUTION &amp;<br>COLLABORATION</div></div><div class="csBody"><div class="csH" style="font-size:16px;margin-bottom:10px">Building the First Version</div><p>Turning an early concept into an executable experience required reducing a broad and still-evolving direction into a smaller set of connected systems that could be built, tested, and refined incrementally.</p><p>I worked across Product, Economy, Art, Development, and internal-tool stakeholders to define the initial progression structure, clarify the relationships between event actions and core-game value, and specify the supporting features needed to make the experience understandable and operationally manageable.</p><p>The economy was not a fixed system handed over for implementation. I worked alongside Product and Economy as assumptions around resource costs, rewards, progression, and player choice were translated into playable flows. Building the experience made it possible to evaluate those assumptions in context, identify friction or unclear value, and refine the system together.</p><p>Rather than documenting every part of the experience at the same level of detail, I focused specifications on the highest-friction areas: decisions that affected player understanding, progression, implementation, operational needs, or future scalability. I also wrote PRDs for supporting features and internal tools where clearer functional requirements were needed.</p><div class="csH" style="font-size:16px;margin:18px 0 10px">Migrating from Linear to Non-Linear</div><p>The migration from a linear to a non-linear model was designed as a gradual strategic process rather than a complete redesign. The initial goal was to recreate maps that remained as close as possible to the proven linear experience while running on the new non-linear infrastructure. This reduced the number of variables changing at once and created a clearer baseline for understanding player behavior.</p><p>I helped translate this strategy into player-facing layouts and flows, coordinating requirements and dependencies across stakeholders and supporting the product and business rationale behind the transition. Additional assumptions were introduced progressively, based on tests conducted by the Strategy team — preserve what was working, expose selected new capabilities, evaluate the results, and expand or revise based on evidence.</p><div class="csH" style="font-size:16px;margin:18px 0 10px">Growing Beyond the MVP</div><p>Following the MVP, Magicaland continued to evolve through strategic pivots, new player-facing features, and an expanding set of internal tools and production capabilities. My scope grew with the product. I owned specific features, flows, layouts, requirements, and internal-tool processes, taking them from early exploration and stakeholder alignment through implementation and iteration.</p><p>As different areas of the product became more interconnected, the work required close coordination with adjacent owners and cross-functional stakeholders. The challenge was not only to deliver individual features, but to evolve them within a growing system without creating contradictions across progression, infrastructure, operational needs, or player value.</p></div></div>
+<div class="csec" id="cs-m-7"><div><div class="klabel">OUTCOME</div></div><div class="csBody"><ul class="ulist"><li><span class="bul">·</span>The MVP was tested in production and became a direct foundation for Magicaland Adventure.</li><li><span class="bul">·</span>The experience continued through multiple versions and additional capabilities.</li><li><span class="bul">·</span>Established a repeatable progression and production model beyond a single feature concept.</li></ul></div></div>
+<div class="csec" id="cs-m-8"><div><div class="klabel">REFLECTION</div></div><div class="csBody"><div class="csH">What Changed in My Product Thinking</div><p>Magicaland changed how I think about product development in evolving systems. The first challenge was not to define the complete future state, but to identify a version that was coherent enough to build, test, and learn from — separating what had to be resolved for the MVP from decisions that could remain flexible until stronger evidence emerged.</p><p>As the product evolved, strategy, economy, player experience, infrastructure, and operational tools continuously shaped one another. A change in one area rarely remained local. It could affect progression, player choice, production workflows, technical requirements, and the value exchanged between the event and the core game.</p><p>The migration from a linear to a non-linear model reinforced the value of controlled change. Recreating a familiar experience on the new infrastructure first allowed the team to reduce the number of variables changing at once, establish a clearer baseline, and introduce new assumptions gradually through testing.</p><p>This showed me that transformation does not always require changing the player experience and the underlying system at the same time. Preserving familiarity can be a deliberate product strategy that enables clearer learning and lowers implementation and adoption risk.</p><p>The main lesson I carried forward: product clarity does not come from defining everything upfront. It comes from structuring change in a way that generates useful evidence, reduces avoidable risk, and allows each iteration to improve both the player experience and the system behind it.</p></div></div>
+</div>
+<div class="wrap"><div class="caseNav"><span class="caseNavBtn" onClick="{{ goCase }}">◀ Wildland Adventure</span><span class="back" onClick="{{ goHome }}">{{ t.back }}</span><span class="caseNavBtn" onClick="{{ goCaseFish }}">Game Redesign ▶</span></div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCaseFish }}" hint-placeholder-val="{{ false }}">
+<div class="page">
+
+<div class="wrap csHead">
+<div class="csTitle">Game Redesign</div>
+<div class="csMeta"><span class="csMetaTag">Effectivate</span><span class="csMetaTag">Product Game Designer</span><span class="csMetaTag">2023 - 2024</span><span class="csMetaTag">Accessible UX · Adaptive Game Systems</span></div>
+</div>
+<div class="wrap"><div class="csCover"><img src="uploads/pasted-1782975439419-0.png" alt="Game Redesign" style="object-position:center 30%"></div></div>
+<div class="wrap">
+<div class="csec" id="cs-f-1"><div><div class="klabel">OVERVIEW</div></div><div class="csBody"><p>Translating research, cognitive goals, accessibility needs, and audience behavior into an adaptive B2C game experience - designed so an older audience could engage confidently with cognitive-training gameplay.</p></div></div>
+<div class="csec" id="cs-f-2"><div><div class="klabel">CHALLENGE</div></div><div class="csBody"><p>The experience was built for older adults, where clarity, confidence, and motivation matter as much as challenge. Design decisions balanced cognitive needs, accessibility, comprehension, and engagement, while staying feasible to build.</p></div></div>
+<div class="csec" id="cs-f-3"><div><div class="klabel">APPROACH</div></div><div class="csBody"><ul class="ulist"><li><span class="bul">·</span>Translated research and product goals into accessible game systems, UX flows, layouts, and interactive experiences.</li><li><span class="bul">·</span>Designed adaptive gameplay that calibrated challenge to the player while preserving clarity and motivation.</li><li><span class="bul">·</span>Worked closely with Development to turn design concepts into feasible, production-ready features.</li></ul></div></div>
+</div>
+<div class="wrap"><div class="caseNav"><span class="caseNavBtn" onClick="{{ goCaseMagic }}">◀ Magicaland Adventure</span><span class="back" onClick="{{ goHome }}">{{ t.back }}</span><span class="caseNavBtn disabled">▶</span></div></div>
+</div>
+</sc-if>
+
+<div class="foot" id="contact">
+<div class="wrap">
+<div class="footGrid">
+<div>
+<div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:19px;color:var(--faint);margin-bottom:14px">Leon Maimon</div>
+<div class="footBig"><em>Game thinking.</em><br>Product depth.</div>
+<div style="display:flex;gap:10px;align-items:center;margin-bottom:24px">
+<a class="contactIcon" style="background:#17181b" href="/cdn-cgi/l/email-protection#346f4d5b4146745159555d581a575b5969" title="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+<a class="contactIcon" style="background:#17181b" href="https://www.linkedin.com/in/leon-maimon/" target="_blank" title="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
+<span class="contactIcon" style="background:#17181b" onClick="{{ openGate }}" title="Behance · protected"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h7c2.8 0 4.5 1.5 4.5 3.8 0 1.4-.7 2.6-1.8 3.2 1.5.6 2.5 2 2.5 3.8 0 2.7-2.2 4.2-5.2 4.2H2V4zm2.5 6.5H8.5c1.2 0 2-.6 2-1.7S9.7 7 8.5 7H4.5V10.5zm0 6H9c1.3 0 2.2-.8 2.2-2s-.9-2-2.2-2H4.5V16.5z"></path><rect x="15.5" y="4" width="6.5" height="1.5"></rect><path d="M19 8c-1.3 0-2.4.5-3.2 1.3-.9.9-1.3 2-1.3 3.3 0 1.3.4 2.5 1.3 3.3.8.8 1.9 1.3 3.2 1.3 1.1 0 2-.3 2.8-.9.7-.6 1.2-1.3 1.4-2.2h-2.2c-.4.8-1.1 1.3-2 1.3-.7 0-1.3-.2-1.7-.7-.3-.4-.6-.9-.6-1.5h6.6c.1-.3.1-.6.1-.9 0-1.3-.4-2.4-1.3-3.2-.8-.7-1.9-1.1-3.1-1.1zm-2.5 3.7c.2-.6.5-1 .9-1.3.5-.3.9-.5 1.6-.5.6 0 1.1.2 1.5.5.4.3.7.7.8 1.3h-4.8z"></path></svg></span>
+<a class="contactIcon" style="background:#17181b" href="{{ resumeHref }}" target="_blank" title="Resume PDF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg></a>
+</div>
+</div>
+<div class="footColR">
+<div class="footColSec"><div class="footColHd">Case Studies</div><a class="footLink" onClick="{{ goCase }}">Wildland Adventure</a><a class="footLink" onClick="{{ goCaseMagic }}">Magicaland Adventure</a><a class="footLink" onClick="{{ goCaseFish }}">Game Redesign</a></div>
+<div class="footColSec"><div class="footColHd">Pages</div><a class="footLink" onClick="{{ goAbout }}">About</a><a class="footLink" onClick="{{ goProcess }}">Process</a></div>
+</div>
+</div>
+<div style="margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);letter-spacing:.04em">Leon Maimon · 2026</div>
+</div>
+</div>
+
+
+
+
+<div class="{{ settPanelCls }}">
+<div class="a11yHead"><span>// PERSONALIZE</span><span class="mX" onClick="{{ closeSettings }}">✕</span></div>
+<div class="a11yRow" onClick="{{ toggleTheme }}"><span>{{ themeLabel }}</span><div class="themeBtn" style="border:none;width:24px;height:24px;font-size:14px">{{ themeIcon }}</div></div>
+<div class="settDivider"></div>
+<div class="a11yHead" style="margin-top:6px"><span>// ACCESSIBILITY</span></div>
+<div class="{{ clsLg }}" onClick="{{ tglLg }}"><span>Larger text</span><span class="a11ySw"><span class="a11ySwDot"></span></span></div>
+<div class="{{ clsContrast }}" onClick="{{ tglContrast }}"><span>High contrast</span><span class="a11ySw"><span class="a11ySwDot"></span></span></div>
+<div class="{{ clsMotion }}" onClick="{{ tglMotion }}"><span>Reduce motion</span><span class="a11ySw"><span class="a11ySwDot"></span></span></div>
+<div class="{{ clsUnderline }}" onClick="{{ tglUnderline }}"><span>Underline links</span><span class="a11ySw"><span class="a11ySwDot"></span></span></div>
+<div class="a11yReset" onClick="{{ resetA11y }}">↺ reset all</div>
+</div>
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{
+  &quot;theme&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;light&quot;,&quot;section&quot;:&quot;Visual&quot;},
+  &quot;accent&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;amber&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;magenta&quot;],&quot;default&quot;:&quot;amber&quot;,&quot;section&quot;:&quot;Visual&quot;},
+  &quot;typeface&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;schibsted&quot;,&quot;sora&quot;,&quot;space&quot;],&quot;default&quot;:&quot;schibsted&quot;,&quot;section&quot;:&quot;Visual&quot;},
+  &quot;showGrid&quot;: {&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;section&quot;:&quot;Visual&quot;},
+  &quot;behanceUrl&quot;: {&quot;editor&quot;:null,&quot;default&quot;:&quot;&quot;,&quot;section&quot;:&quot;Private&quot;}
+}">
+class Component extends DCLogic {
+  static TRANS = {
+    en: {
+      navWork:'work', navAbout:'about', navProcess:'process', navContact:'contact', navResume:'resume.pdf',
+      heroMeta1:'ROLE', heroMeta1v:'Product Designer · Game UX',
+      heroMeta2:'FOCUS', heroMeta2v:'Systems · Progression · Live Ops',
+      heroMeta3:'LOC', heroMeta3v:'Israel / Remote',
+      heroTitle:'Designing systems players ', heroTitleEm:'actually understand.',
+      heroLede:'I work across product thinking, UX, game systems, and cross-functional execution - translating user, business, Economy, and technical constraints into experiences that can be built, tested, and evolved.',
+      heroBtn1:'View selected work', heroBtn2:'About me',
+      heroStatus:'Product Design · Game UX · Available',
+      secWork:'// SELECTED_WORK', secCaps:'// CAPABILITIES', secSystems:'SELECTED_SYSTEMS',
+      secContact:'// CONTACT', secAbout:'// ABOUT', secExp:'// EXPERIENCE', secEdu:'// EDUCATION & languages',
+      secProcess:'// PROCESS',
+      contactHed:"Let's build products that make complex systems feel clear.",
+      mobStatus:'Leon Maimon · 2026',
+      back:'all work',
+      procHed:'From problem framing to live iteration.',
+      procLede1:'I work across the product development cycle and stay close to the disciplines that shape the final experience - Product, Game Design, Economy, Art, and Engineering.',
+      procLede2:'My focus is on connecting systems, player behavior, business goals, and technical constraints - then translating that understanding into clear, executable solutions.',
+      metaClient:'CLIENT', metaRole:'ROLE', metaScope:'SCOPE', metaYear:'YEAR',
+      klCaseStudy01:'CASE_STUDY · 01', klCaseStudy02:'CASE_STUDY · 02', klCaseStudy03:'CASE_STUDY · 03',
+      rowWildlandDesc:'Designing and balancing a mature live progression system.',
+      rowMagicDesc:'From a production-tested non-linear MVP to an evolving product experience.',
+      rowFishDesc:'Translating cognitive research and accessibility needs into an adaptive B2C game.',
+      readCase:'read case', heroBarStatus:'next level · open',
+    }
+  };
+  state = { page: 'home', theme: 'light', a11yOpen: false, settOpen: false, a11y: { lg: false, contrast: false, motion: false, underline: false }, mobOpen: false };
+  handleScroll() {
+    const hdr = document.querySelector('.hdr');
+    if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 10);
+    this.adaptSideNav();
+    const leftNav = document.querySelector('.csLeftNav');
+    const foot = document.querySelector('.foot');
+    if (leftNav && foot) {
+      const footTop = foot.getBoundingClientRect().top;
+      const navH = leftNav.offsetHeight;
+      const viewH = window.innerHeight;
+      const margin = 32;
+      const maxBottom = footTop - margin;
+      const navCenter = viewH / 2;
+      const navTopFromCenter = -navH / 2;
+      const navBottomInViewport = navCenter - navTopFromCenter;
+      if (navBottomInViewport > maxBottom) {
+        const shift = navBottomInViewport - maxBottom;
+        leftNav.style.transform = `translateY(calc(-50% - ${shift}px))`;
+      } else {
+        leftNav.style.transform = 'translateY(-50%)';
+      }
+    }
+  }
+  static CHAP = {
+    case: [
+      {id:'cs-w-1',label:'overview'},{id:'cs-w-2',label:'challenge'},{id:'cs-w-3',label:'approach'},
+      {id:'cs-w-4',label:'System'},{id:'cs-w-5',label:'experience'},{id:'cs-w-6',label:'execution'},
+      {id:'cs-w-7',label:'outcome'},{id:'cs-w-8',label:'reflection'},
+    ],
+    magic: [
+      {id:'cs-m-1',label:'overview'},{id:'cs-m-2',label:'challenge'},{id:'cs-m-3',label:'role & scope'},
+      {id:'cs-m-4',label:'System'},{id:'cs-m-5',label:'mvp design'},{id:'cs-m-6',label:'execution'},
+      {id:'cs-m-7',label:'outcome'},{id:'cs-m-8',label:'reflection'},
+    ],
+    fish: [
+      {id:'cs-f-1',label:'overview'},{id:'cs-f-2',label:'challenge'},{id:'cs-f-3',label:'approach'},
+    ],
+  };
+  initChapterNav(page) {
+    if (this._chapObs) { this._chapObs.disconnect(); this._chapObs = null; }
+    if (this._chapScrollHandler) { window.removeEventListener('scroll', this._chapScrollHandler); this._chapScrollHandler = null; }
+    const prefix = {case:'cs-w-',magic:'cs-m-',fish:'cs-f-'}[page];
+    if (!prefix) { this._activeChap = null; this.forceUpdate(); return; }
+    const updateActive = () => {
+      if (this._chapClickLock) return;
+      const els = document.querySelectorAll('[id^="' + prefix + '"]');
+      if (!els.length) return;
+      const target = window.innerHeight * 0.32;
+      let best = null, bestDist = Infinity;
+      els.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top <= target) { const d = target - top; if (d < bestDist) { bestDist = d; best = el.id; } }
+      });
+      if (best && best !== this._activeChap) { this._activeChap = best; this.forceUpdate(); }
+    };
+    this._activeChap = prefix + '1';
+    this._chapScrollHandler = updateActive;
+    window.addEventListener('scroll', updateActive, { passive: true });
+    setTimeout(updateActive, 100);
+    this.forceUpdate();
+  }
+  adaptSideNav() {
+    const nav = document.querySelector('.sideNav');
+    if (!nav) return;
+    const items = nav.querySelectorAll('.sni');
+    nav.style.pointerEvents = 'none';
+    items.forEach(item => {
+      const r = item.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      const el = document.elementFromPoint(cx, cy);
+      if (!el) return;
+      let bg = getComputedStyle(el).backgroundColor;
+      let m = bg.match(/\d+/g);
+      if (!m || m[0] === '0' && m[1] === '0' && m[2] === '0') {
+        const parent = el.parentElement;
+        if (parent) { bg = getComputedStyle(parent).backgroundColor; m = bg.match(/\d+/g); }
+      }
+      if (!m) return;
+      const lum = (parseInt(m[0]) * 299 + parseInt(m[1]) * 587 + parseInt(m[2]) * 114) / 1000;
+      item.classList.toggle('sniLight', lum > 140);
+    });
+    nav.style.pointerEvents = '';
+  }
+  initCollapsibles() {
+    const isMobile = window.innerWidth <= 860;
+    document.querySelectorAll('.csec').forEach(csec => {
+      const body = csec.querySelector('.csBody');
+      const heading = csec.querySelector('.klabel, .klsub');
+      const existing = csec.querySelector(':scope > .csCollapseBtn');
+      if (!body || !heading) return;
+      const label = heading.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      const isOverview = /^OVERVIEW$/i.test(label);
+      const hasMedia = !!csec.querySelector('img, video, iframe');
+      const hasDiagram = !!csec.querySelector('svg, .wdDiag, .diagram');
+      const isDefaultDiagram = hasDiagram && (/^SYSTEM$/i.test(label) || /^APPROACH$/i.test(label));
+      const shouldCollapse = isMobile && !isOverview && !hasMedia;
+      if (!shouldCollapse) {
+        csec.classList.remove('csCollapse', 'csOpen');
+        if (existing) existing.remove();
+        return;
+      }
+      csec.classList.add('csCollapse');
+      if (existing) return;
+      csec.classList.toggle('csOpen', isDefaultDiagram);
+      const btn = document.createElement('button');
+      btn.className = 'csCollapseBtn';
+      btn.setAttribute('type', 'button');
+      btn.setAttribute('aria-expanded', isDefaultDiagram ? 'true' : 'false');
+      btn.innerHTML = '<span class="csCBLabel">' + label + '</span><span class="csCBIcon">' + (isDefaultDiagram ? '\u2212' : '+') + '</span>';
+      btn.addEventListener('click', () => {
+        const open = csec.classList.toggle('csOpen');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.querySelector('.csCBIcon').textContent = open ? '\u2212' : '+';
+      });
+      csec.insertBefore(btn, body);
+    });
+  }
+  positionSideNav() {
+    const nav = document.querySelector('.sideNav');
+    if (!nav) return;
+    const page = this.state.page;
+    let anchor;
+    if (['case','magic','fish'].includes(page)) {
+      anchor = document.querySelector('#cs-w-1') || document.querySelector('#cs-m-1') || document.querySelector('#cs-f-1');
+    }
+    if (!anchor) anchor = document.querySelector('.h1');
+    if (!anchor) return;
+    const r = anchor.getBoundingClientRect();
+    const top = Math.round(r.top + window.scrollY);
+    document.documentElement.style.setProperty('--sideNavTop', Math.max(80, top) + 'px');
+  }
+  TL_DATA = [
+    { co:'Moon Active', yr:'2024–26', role:'Product Level Designer & Feature Run Owner', tags:['Progression','Economy','Level Design','LiveOps','PRDs'], desc:'Designed live progression features within Coin Master — translating Product and Business direction into playable configurations and production-ready experiences. Shaped progression pacing and content requirements. Defined PRDs, use cases, and acceptance criteria for internal tools. Collaborated across Product, Economy, Dev, Art, Tech Art, QA, Ops, Monetization, and Platform.' },
+    { co:'Effectivate', yr:'2023–24', role:'Product Game Designer', tags:['UX Design','Game Design','B2C','Research'], desc:'Translated cognitive research, product goals, and the needs of older users into accessible game mechanics, UX flows, and adaptive training experiences. Designed player-facing flows, interaction patterns, feedback systems, and UI layouts from concept through production. Managed design interns and improved sprint workflow practices.' },
+    { co:'Self-Employed', yr:'2020–22', role:'Concept Artist & Game Artist', tags:['Visual Design','Mobile','Art Direction'], desc:'Created environments, UI elements, icons, characters, and production assets for casual mobile games, including Muuula Games. Developed strong understanding of mobile-first visual clarity, asset production, and player-facing communication.' },
+    { co:'Hillel Israel', yr:'2019–20', role:'Program Manager', tags:['Operations','Stakeholder Management'], desc:'Planned and delivered social programs and exhibitions — coordinating stakeholders, schedules, budgets, dependencies, and end-to-end execution.' },
+    { co:'Seedr', yr:'2014–15', role:'UX/UI Designer', tags:['UX','UI','Wireframes'], desc:'Designed web-product flows, wireframes, and high-fidelity interfaces in an early-stage startup environment.' },
+  ];
+  initTimeline() {
+    const items = document.querySelectorAll('#abTl .abNewTlItem');
+    const card = document.getElementById('abTlCard');
+    if (!items.length) return;
+    const isMob = window.innerWidth <= 680;
+    const show = (idx) => {
+      items.forEach((el,i) => {
+        const isActive = i===idx;
+        el.classList.toggle('cur', isActive);
+        el.classList.toggle('nextUp', i === (idx + 1) % items.length && !isActive);
+        el.querySelector('.abNewTlDot').style.background = isActive ? 'var(--acc)' : '';
+        el.querySelector('.abNewTlDot').style.borderColor = isActive ? 'var(--acc)' : '';
+        if (isActive && card && !isMob) {
+          const tlEl2 = document.getElementById('abTl');
+          if (tlEl2) {
+            const tlW = tlEl2.offsetWidth;
+            const itemW = tlW / items.length;
+            const rawOff = idx * itemW;
+            card.style.left = '0px';
+          const accent = document.getElementById('abTlAccent');
+          const tlEl3 = document.getElementById('abTl');
+          if (accent && tlEl3) {
+            const tlW = tlEl3.offsetWidth;
+            const itemW = tlW / items.length;
+            accent.style.marginLeft = Math.round(idx * itemW) + 'px';
+          }
+          }
+          card.classList.remove('snap');
+          void card.offsetWidth;
+          card.classList.add('snap');
+        }
+        if (isMob) {
+          let drop = el.querySelector('.abTlMobDrop');
+          if (!drop) { drop = document.createElement('div'); drop.className='abTlMobDrop'; el.appendChild(drop); }
+          if (isActive) { const d=this.TL_DATA[i]; drop.innerHTML=`<div class="abTlMobRole">${d.role}</div><div class="abTlMobDesc">${d.desc}</div>`; drop.style.display='block'; setTimeout(() => { const rect = el.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + rect.top - 72, behavior: 'smooth' }); }, 80); } else { drop.style.display='none'; }
+        }
+      });
+      if (!isMob && card) {
+        const d = this.TL_DATA[idx];
+        document.getElementById('abTlCo').textContent = d.co;
+        document.getElementById('abTlYr').textContent = d.yr;
+        document.getElementById('abTlRole').textContent = d.role;
+        document.getElementById('abTlDesc').textContent = d.desc;
+        const tagsEl = document.getElementById('abTlTags'); if (tagsEl) tagsEl.innerHTML = '';
+        card.classList.add('show');
+      }
+    };
+    items.forEach((el,i) => el.addEventListener('click', () => show(i)));
+    const wrap = document.querySelector('.abTlWrap');
+    if (wrap && card) {
+      let maxH = 0;
+      this.TL_DATA.forEach((d,i) => {
+        document.getElementById('abTlRole').textContent = d.role;
+        document.getElementById('abTlDesc').textContent = d.desc;
+        card.classList.add('show');
+        const h = card.offsetTop + card.offsetHeight + 20;
+        if (h > maxH) maxH = h;
+      });
+      wrap.style.height = Math.max(280, maxH) + 'px';
+    }
+    show(0);
+    if (!isMob && card) card.style.display='';
+    else if (card) card.style.display='none';
+  }
+  componentDidMount() {
+    setTimeout(() => { this.positionSideNav(); this.initTimeline(); this.initChapterNav(this.state.page); this.initCollapsibles(); }, 150);
+    this._animateYearScramble();
+    window.addEventListener('resize', () => { this.positionSideNav(); this.initTimeline(); this.initCollapsibles(); }, { passive: true });
+    window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
+    this.handleScroll();
+    try { const a = JSON.parse(localStorage.getItem('lm_a11y') || 'null'); if (a) this.setState({ a11y: Object.assign({ lg: false, contrast: false, motion: false, underline: false }, a) }); } catch (e) {}
+    const t = 'light';
+    try { localStorage.setItem('lm_theme', 'light'); } catch (e) {}
+    this.setState({ theme: t });
+    try {
+      const p = (location.hash || '').replace('#', '');
+      if (['home', 'about', 'process', 'case', 'magic', 'fish'].includes(p)) this.setState({ page: p });
+    } catch (e) {}
+  }
+  _animateYearScramble() {
+    const el = document.getElementById('heroBarYear');
+    if (!el) return;
+    const chars = ['🎮','🕹️','🎲','🎯','⭐','🔮','🎪','⚡','🏆','🎁','✨','💫'];
+    const target = '2026';
+    const delay = 600;
+    const duration = 2400;
+    const rnd = () => chars[Math.floor(Math.random() * chars.length)];
+    el.innerHTML = '';
+    const slots = [0,1,2,3].map(() => {
+      const s = document.createElement('span');
+      s.style.cssText = 'display:inline-block;width:1.4em;text-align:center;overflow:hidden';
+      s.textContent = rnd();
+      el.appendChild(s);
+      return s;
+    });
+    const start = Date.now() + delay;
+    const tick = () => {
+      const now = Date.now();
+      const progress = now <= start ? 0 : Math.min((now - start) / duration, 1);
+      if (progress >= 1) { slots.forEach((s,i) => s.textContent = target[i]); return; }
+      slots.forEach((s,i) => {
+        const lock = progress >= (i + 1) / 4 - 0.05;
+        s.textContent = lock ? target[i] : rnd();
+      });
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  go(p) {
+    this.setState({ page: p }, () => {
+      if (p === 'about') setTimeout(() => this.initTimeline(), 80);
+      if (['case','magic','fish'].includes(p)) setTimeout(() => { this.initChapterNav(p); this.initCollapsibles(); }, 150);
+      else { this._activeChap = null; if (this._chapObs) { this._chapObs.disconnect(); this._chapObs = null; } if (this._chapScrollHandler) { window.removeEventListener('scroll', this._chapScrollHandler); this._chapScrollHandler = null; } }
+    });
+    try { if (p === 'home') history.replaceState(null, '', location.pathname); else location.hash = p; } catch (e) {}
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+  toggleTheme() {
+    const t = this.state.theme === 'light' ? 'dark' : 'light';
+    this.setState({ theme: t });
+    try { localStorage.setItem('lm_theme', t); } catch (e) {}
+  }
+  behanceUrl() { return this.props.behanceUrl ?? ''; }
+  openBehance() { if (this.behanceUrl()) { try { window.open(this.behanceUrl(), '_blank'); } catch (e) {} } }
+  toggleSettings() { this.setState(s => ({ settOpen: !s.settOpen, a11yOpen: false })); }
+  closeSettings() { this.setState({ settOpen: false }); }
+  toggleA11yPanel() { this.setState(s => ({ a11yOpen: !s.a11yOpen })); }
+  closeA11y() { this.setState({ a11yOpen: false }); }
+  setA11y(key) {
+    const a = Object.assign({}, this.state.a11y, { [key]: !this.state.a11y[key] });
+    this.setState({ a11y: a });
+    try { localStorage.setItem('lm_a11y', JSON.stringify(a)); } catch (e) {}
+  }
+  resetA11y() {
+    const a = { lg: false, contrast: false, motion: false, underline: false };
+    this.setState({ a11y: a });
+    try { localStorage.setItem('lm_a11y', JSON.stringify(a)); } catch (e) {}
+  }
+  cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  renderVals() {
+    const acc = this.props.accent ?? 'amber';
+    const tf = this.props.typeface ?? 'schibsted';
+    const showGrid = this.props.showGrid ?? true;
+    const page = this.state.page;
+    const theme = this.state.theme;
+    const a = this.state.a11y;
+    const a11yClass = [a.lg ? 'a11y-lg' : '', a.contrast ? 'a11y-contrast' : '', a.motion ? 'a11y-motion' : '', a.underline ? 'a11y-underline' : ''].join(' ').trim();
+    const row = (on) => (on ? 'a11yRow on' : 'a11yRow');
+    const nav = (p) => (page === p ? 'navItem on' : 'navItem');
+    const t = Component.TRANS.en;
+    return {
+      t, siteDir: 'ltr', rtlClass: '',
+      a11yClass,
+      a11yOpen: this.state.a11yOpen,
+      settOpen: this.state.settOpen,
+      settPanelCls: this.state.settOpen ? 'settPanel open' : 'settPanel',
+      toggleSettings: () => this.toggleSettings(),
+      closeSettings: () => this.closeSettings(),
+      toggleA11y: () => this.toggleA11yPanel(),
+      closeA11y: () => this.closeA11y(),
+      resetA11y: () => this.resetA11y(),
+      tglLg: () => this.setA11y('lg'), tglContrast: () => this.setA11y('contrast'), tglMotion: () => this.setA11y('motion'), tglUnderline: () => this.setA11y('underline'),
+      clsLg: row(a.lg), clsContrast: row(a.contrast), clsMotion: row(a.motion), clsUnderline: row(a.underline),
+      accentClass: 'acc' + this.cap(acc),
+      tfClass: 'tf' + this.cap(tf),
+      themeClass: theme === 'light' ? 'light' : '',
+      themeIcon: theme === 'light' ? '\u263e' : '\u2600',
+      gridClass: '',
+      isHome: page === 'home', isAbout: page === 'about', isProcess: page === 'process', isCase: page === 'case', isCaseMagic: page === 'magic', isCaseFish: page === 'fish',
+      clsWork: page === 'home' ? 'navItem on' : 'navItem',
+      clsAbout: nav('about'), clsProcess: nav('process'),
+      csChapNavCls: ['case','magic','fish'].includes(page) ? '' : 'csChapNavHidden',
+      csChapItems: (Component.CHAP[page] || []).map(s => ({ label: s.label, href: '#' + s.id, cls: 'csChapDot' + (this._activeChap === s.id ? ' cur' : ''), onClick: () => { this._activeChap = s.id; this._chapClickLock = true; clearTimeout(this._chapLockTimer); this._chapLockTimer = setTimeout(() => { this._chapClickLock = false; }, 1200); this.forceUpdate(); setTimeout(() => this.initCollapsibles(), 50); } })),
+      goHome: () => this.go('home'), goAbout: () => this.go('about'), goProcess: () => this.go('process'), goCase: () => this.go('case'), goCaseMagic: () => this.go('magic'), goCaseFish: () => this.go('fish'),
+      toggleTheme: () => this.toggleTheme(),
+      themeLabel: this.state.theme === 'light' ? 'Light Mode' : 'Dark Mode',
+      toggleMob: () => this.setState(s => ({ mobOpen: !s.mobOpen, settOpen: false })),
+      closeMob: () => this.setState({ mobOpen: false, settOpen: false }),
+      burgerCls: this.state.mobOpen ? 'burger open' : 'burger',
+      mobMenuCls: this.state.mobOpen ? 'gMenu open' : 'gMenu',
+      mobClsWork: page === 'home' ? 'menuNavItem on' : 'menuNavItem',
+      mobClsAbout: page === 'about' ? 'menuNavItem on' : 'menuNavItem',
+      mobClsProcess: page === 'process' ? 'menuNavItem on' : 'menuNavItem',
+      mobGoHome: () => { this.go('home'); this.setState({ mobOpen: false }); },
+      mobGoAbout: () => { this.go('about'); this.setState({ mobOpen: false }); },
+      mobGoProcess: () => { this.go('process'); this.setState({ mobOpen: false }); },
+      goCaseMob: () => { this.go('case'); this.setState({ mobOpen: false }); },
+      goCaseMagicMob: () => { this.go('magic'); this.setState({ mobOpen: false }); },
+      goCaseFishMob: () => { this.go('fish'); this.setState({ mobOpen: false }); },
+      heroBarStatus: t.heroBarStatus,
+      mobBackdropCls: this.state.mobOpen ? 'mobBackdrop open' : 'mobBackdrop',
+      openGate: () => this.openBehance(),
+      resumeHref: 'uploads/Leon_Maimon_Product_CV_2026.pdf'
+    };
+  }
+}
+</script>
+</body>
+</html>
