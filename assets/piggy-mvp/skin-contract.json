@@ -1,0 +1,423 @@
+{
+  "status": "candidate source skin, not motion approved",
+  "source": "north-cutout-source-v2.png",
+  "canvas": [
+    90,
+    90
+  ],
+  "groundAnchor": [
+    45,
+    80
+  ],
+  "parts": {
+    "body": {
+      "crop": [
+        75,
+        15,
+        435,
+        715
+      ],
+      "sourcePivot": [
+        292,
+        28
+      ],
+      "scale": 0.09101941747572816,
+      "picturePivot": [
+        45,
+        6.6
+      ]
+    },
+    "leftArm": {
+      "crop": [
+        595,
+        330,
+        210,
+        335
+      ],
+      "sourcePivot": [
+        728,
+        380
+      ],
+      "scale": 0.065,
+      "picturePivot": [
+        31.7,
+        41.5
+      ]
+    },
+    "rightArm": {
+      "crop": [
+        960,
+        330,
+        210,
+        335
+      ],
+      "sourcePivot": [
+        1034,
+        380
+      ],
+      "scale": 0.065,
+      "picturePivot": [
+        58.3,
+        41.5
+      ]
+    }
+  },
+  "legs": [
+    {
+      "name": "left",
+      "cropX": 80,
+      "cropW": 280,
+      "sourceX": [
+        248,
+        236.5,
+        232.5,
+        232.5
+      ]
+    },
+    {
+      "name": "right",
+      "cropX": 540,
+      "cropW": 280,
+      "sourceX": [
+        650.5,
+        658,
+        660,
+        660
+      ]
+    }
+  ],
+  "jointSourceY": [
+    850,
+    1000,
+    1132,
+    1193
+  ],
+  "bands": [
+    {
+      "name": "left",
+      "id": "left0",
+      "sourceY": [
+        809,
+        850
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left1",
+      "sourceY": [
+        850,
+        875.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left2",
+      "sourceY": [
+        875.0,
+        900.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left3",
+      "sourceY": [
+        900.0,
+        925.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left4",
+      "sourceY": [
+        925.0,
+        950.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left5",
+      "sourceY": [
+        950.0,
+        975.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left6",
+      "sourceY": [
+        975.0,
+        1000.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left7",
+      "sourceY": [
+        1000.0,
+        1022.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left8",
+      "sourceY": [
+        1022.0,
+        1044.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left9",
+      "sourceY": [
+        1044.0,
+        1066.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left10",
+      "sourceY": [
+        1066.0,
+        1088.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left11",
+      "sourceY": [
+        1088.0,
+        1110.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left12",
+      "sourceY": [
+        1110.0,
+        1132.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left13",
+      "sourceY": [
+        1132.0,
+        1152.3333333333333
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left14",
+      "sourceY": [
+        1152.3333333333333,
+        1172.6666666666667
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "left",
+      "id": "left15",
+      "sourceY": [
+        1172.6666666666667,
+        1193.0
+      ],
+      "cropX": 80,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right0",
+      "sourceY": [
+        809,
+        850
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right1",
+      "sourceY": [
+        850,
+        875.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right2",
+      "sourceY": [
+        875.0,
+        900.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right3",
+      "sourceY": [
+        900.0,
+        925.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right4",
+      "sourceY": [
+        925.0,
+        950.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right5",
+      "sourceY": [
+        950.0,
+        975.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right6",
+      "sourceY": [
+        975.0,
+        1000.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right7",
+      "sourceY": [
+        1000.0,
+        1022.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right8",
+      "sourceY": [
+        1022.0,
+        1044.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right9",
+      "sourceY": [
+        1044.0,
+        1066.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right10",
+      "sourceY": [
+        1066.0,
+        1088.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right11",
+      "sourceY": [
+        1088.0,
+        1110.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right12",
+      "sourceY": [
+        1110.0,
+        1132.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right13",
+      "sourceY": [
+        1132.0,
+        1152.3333333333333
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right14",
+      "sourceY": [
+        1152.3333333333333,
+        1172.6666666666667
+      ],
+      "cropX": 540,
+      "cropW": 280
+    },
+    {
+      "name": "right",
+      "id": "right15",
+      "sourceY": [
+        1172.6666666666667,
+        1193.0
+      ],
+      "cropX": 540,
+      "cropW": 280
+    }
+  ],
+  "legWidthScale": 0.0656,
+  "soleLandmark": "alpha200 lowest source support-band centre at y1191; boundary y1193; point is tread support landmark, not heel/toe roll proof",
+  "artPieces": 5,
+  "legBones": 6,
+  "bandsAreNotArtPieces": true,
+  "rasterEmbedded": true
+}
